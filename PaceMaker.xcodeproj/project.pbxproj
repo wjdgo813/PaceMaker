@@ -15,6 +15,9 @@
 		6F0AEF2125F62E78009DA436 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F0AEF1F25F62E78009DA436 /* LaunchScreen.storyboard */; };
 		6F0AEF2C25F62E79009DA436 /* PaceMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0AEF2B25F62E79009DA436 /* PaceMakerTests.swift */; };
 		6F0AEF3725F62E79009DA436 /* PaceMakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0AEF3625F62E79009DA436 /* PaceMakerUITests.swift */; };
+		A89DA4A87A0F1CF1C75C54C4 /* Pods_PaceMakerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB675C25F47DA114121BDCF /* Pods_PaceMakerTests.framework */; };
+		DBAE0633108329BD964F5762 /* Pods_PaceMaker_PaceMakerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DF7F47632BFD753009A0C4 /* Pods_PaceMaker_PaceMakerUITests.framework */; };
+		F5DEFBD88501FC61A0DA8C63 /* Pods_PaceMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F437667B6049EFE006A125 /* Pods_PaceMaker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		039C1CBDAF7F89AE23304921 /* Pods-PaceMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaceMaker.debug.xcconfig"; path = "Target Support Files/Pods-PaceMaker/Pods-PaceMaker.debug.xcconfig"; sourceTree = "<group>"; };
+		3E21784E3A880EC290C2B2EE /* Pods-PaceMakerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaceMakerTests.debug.xcconfig"; path = "Target Support Files/Pods-PaceMakerTests/Pods-PaceMakerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F0AEF1125F62E78009DA436 /* PaceMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaceMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F0AEF1425F62E78009DA436 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F0AEF1625F62E78009DA436 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +54,13 @@
 		6F0AEF3225F62E79009DA436 /* PaceMakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaceMakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F0AEF3625F62E79009DA436 /* PaceMakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceMakerUITests.swift; sourceTree = "<group>"; };
 		6F0AEF3825F62E79009DA436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83DF7F47632BFD753009A0C4 /* Pods_PaceMaker_PaceMakerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceMaker_PaceMakerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88D9919B0ECBA3CC14076861 /* Pods-PaceMakerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaceMakerTests.release.xcconfig"; path = "Target Support Files/Pods-PaceMakerTests/Pods-PaceMakerTests.release.xcconfig"; sourceTree = "<group>"; };
+		B6496B1806872D6C3A80EB7A /* Pods-PaceMaker-PaceMakerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaceMaker-PaceMakerUITests.debug.xcconfig"; path = "Target Support Files/Pods-PaceMaker-PaceMakerUITests/Pods-PaceMaker-PaceMakerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C5F437667B6049EFE006A125 /* Pods_PaceMaker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceMaker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBB675C25F47DA114121BDCF /* Pods_PaceMakerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceMakerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D21DCB31DC9D7695C3F8C7D5 /* Pods-PaceMaker-PaceMakerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaceMaker-PaceMakerUITests.release.xcconfig"; path = "Target Support Files/Pods-PaceMaker-PaceMakerUITests/Pods-PaceMaker-PaceMakerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FE3DAED49DE27D7C85B819DB /* Pods-PaceMaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaceMaker.release.xcconfig"; path = "Target Support Files/Pods-PaceMaker/Pods-PaceMaker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5DEFBD88501FC61A0DA8C63 /* Pods_PaceMaker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A89DA4A87A0F1CF1C75C54C4 /* Pods_PaceMakerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBAE0633108329BD964F5762 /* Pods_PaceMaker_PaceMakerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +98,8 @@
 				6F0AEF2A25F62E79009DA436 /* PaceMakerTests */,
 				6F0AEF3525F62E79009DA436 /* PaceMakerUITests */,
 				6F0AEF1225F62E78009DA436 /* Products */,
+				E229A89EBDB83E67AA63D027 /* Pods */,
+				9C59631C5B76990CFB92629F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +145,30 @@
 			path = PaceMakerUITests;
 			sourceTree = "<group>";
 		};
+		9C59631C5B76990CFB92629F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C5F437667B6049EFE006A125 /* Pods_PaceMaker.framework */,
+				83DF7F47632BFD753009A0C4 /* Pods_PaceMaker_PaceMakerUITests.framework */,
+				CBB675C25F47DA114121BDCF /* Pods_PaceMakerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E229A89EBDB83E67AA63D027 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				039C1CBDAF7F89AE23304921 /* Pods-PaceMaker.debug.xcconfig */,
+				FE3DAED49DE27D7C85B819DB /* Pods-PaceMaker.release.xcconfig */,
+				B6496B1806872D6C3A80EB7A /* Pods-PaceMaker-PaceMakerUITests.debug.xcconfig */,
+				D21DCB31DC9D7695C3F8C7D5 /* Pods-PaceMaker-PaceMakerUITests.release.xcconfig */,
+				3E21784E3A880EC290C2B2EE /* Pods-PaceMakerTests.debug.xcconfig */,
+				88D9919B0ECBA3CC14076861 /* Pods-PaceMakerTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F0AEF3B25F62E79009DA436 /* Build configuration list for PBXNativeTarget "PaceMaker" */;
 			buildPhases = (
+				25A46870B9E4B4E9C311314B /* [CP] Check Pods Manifest.lock */,
 				6F0AEF0D25F62E78009DA436 /* Sources */,
 				6F0AEF0E25F62E78009DA436 /* Frameworks */,
 				6F0AEF0F25F62E78009DA436 /* Resources */,
+				7D93F0B0193D2AD908CEAA4B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F0AEF3E25F62E79009DA436 /* Build configuration list for PBXNativeTarget "PaceMakerTests" */;
 			buildPhases = (
+				78F24DC2553D374EB7AA0E60 /* [CP] Check Pods Manifest.lock */,
 				6F0AEF2325F62E79009DA436 /* Sources */,
 				6F0AEF2425F62E79009DA436 /* Frameworks */,
 				6F0AEF2525F62E79009DA436 /* Resources */,
@@ -170,9 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F0AEF4125F62E79009DA436 /* Build configuration list for PBXNativeTarget "PaceMakerUITests" */;
 			buildPhases = (
+				9477BF5FFDD30BF06DE30DAE /* [CP] Check Pods Manifest.lock */,
 				6F0AEF2E25F62E79009DA436 /* Sources */,
 				6F0AEF2F25F62E79009DA436 /* Frameworks */,
 				6F0AEF3025F62E79009DA436 /* Resources */,
+				6460EE30B46B35EA944E04C5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,6 +298,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		25A46870B9E4B4E9C311314B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PaceMaker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6460EE30B46B35EA944E04C5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PaceMaker-PaceMakerUITests/Pods-PaceMaker-PaceMakerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PaceMaker-PaceMakerUITests/Pods-PaceMaker-PaceMakerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PaceMaker-PaceMakerUITests/Pods-PaceMaker-PaceMakerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78F24DC2553D374EB7AA0E60 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PaceMakerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D93F0B0193D2AD908CEAA4B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PaceMaker/Pods-PaceMaker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PaceMaker/Pods-PaceMaker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PaceMaker/Pods-PaceMaker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9477BF5FFDD30BF06DE30DAE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PaceMaker-PaceMakerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6F0AEF0D25F62E78009DA436 /* Sources */ = {
@@ -433,6 +582,7 @@
 		};
 		6F0AEF3C25F62E79009DA436 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 039C1CBDAF7F89AE23304921 /* Pods-PaceMaker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -452,6 +602,7 @@
 		};
 		6F0AEF3D25F62E79009DA436 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE3DAED49DE27D7C85B819DB /* Pods-PaceMaker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -471,6 +622,7 @@
 		};
 		6F0AEF3F25F62E79009DA436 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E21784E3A880EC290C2B2EE /* Pods-PaceMakerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -493,6 +645,7 @@
 		};
 		6F0AEF4025F62E79009DA436 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88D9919B0ECBA3CC14076861 /* Pods-PaceMakerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +668,7 @@
 		};
 		6F0AEF4225F62E79009DA436 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6496B1806872D6C3A80EB7A /* Pods-PaceMaker-PaceMakerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +689,7 @@
 		};
 		6F0AEF4325F62E79009DA436 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D21DCB31DC9D7695C3F8C7D5 /* Pods-PaceMaker-PaceMakerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
