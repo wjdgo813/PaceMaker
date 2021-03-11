@@ -173,13 +173,21 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		6F50491825FA4D31009DE896 /* Pace */ = {
+			isa = PBXGroup;
+			children = (
+				6FD4A87625F6348100838BAE /* PaceViewController.swift */,
+				6FD4A87B25F7134E00838BAE /* PaceViewModel.swift */,
+			);
+			path = Pace;
+			sourceTree = "<group>";
+		};
 		6FD4A87525F6346600838BAE /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				6F0AEF1825F62E78009DA436 /* ViewController.swift */,
-				6FD4A87625F6348100838BAE /* PaceViewController.swift */,
-				6FD4A87B25F7134E00838BAE /* PaceViewModel.swift */,
 				6F0C0A7125F787E0008EDF20 /* ContainerViewController.swift */,
+				6F0AEF1825F62E78009DA436 /* ViewController.swift */,
+				6F50491825FA4D31009DE896 /* Pace */,
 			);
 			path = Scene;
 			sourceTree = "<group>";

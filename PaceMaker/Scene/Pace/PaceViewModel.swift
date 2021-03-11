@@ -22,7 +22,8 @@ class PaceViewModel {
         let timer   : Observable<Int>
     }
     
-    private let manager = CMMotionActivityManager()
+    private let manager   = CMMotionActivityManager()
+    private var timeCount = 0
     private let activityState = BehaviorRelay<ActivityState>(value: .stationary)
     private let disposeBag = DisposeBag()
     
@@ -37,7 +38,11 @@ class PaceViewModel {
         let timer = input.runningTimer
             .flatMapLatest { isRunning in
                 isRunning ? Observable<Int>
-                    .interval(.seconds(1), scheduler: MainScheduler.instance) : .just(0)
+                    .interval(.seconds(1), scheduler: MainScheduler.instance).map { _ in true } : .empty()
+            }.map { [weak self] countable -> Int in
+                guard let self = self else { return 0 }
+                self.timeCount += 1
+                return self.timeCount
             }
           
         return Output(activity: self.activityState.asObservable(),
