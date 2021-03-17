@@ -49,7 +49,7 @@ extension PaceViewController {
                 self?.activityLabel.text = state.rawValue
         }).disposed(by: self.disposeBag)
         
-        output.timer
+        output.runningTimer
             .subscribe(onNext: { [weak self] timer in
                 self?.timerLabel.text = "\(timer)"
         }).disposed(by: self.disposeBag)

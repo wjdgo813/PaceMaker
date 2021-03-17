@@ -21,7 +21,8 @@ class PaceViewModel {
     struct Output {
         let activity: Observable<ActivityState>
         let distance: Observable<Double>
-        let timer   : Observable<Int>
+        let runningTimer   : Observable<Int>
+        let walkingTimer   : Observable<Int>
     }
     
     private let locationManager = CLLocationManager()
@@ -31,6 +32,7 @@ class PaceViewModel {
     private let locations = BehaviorRelay<[CLLocation]>(value: [])
     private let totalDistance = BehaviorRelay<Double>(value: 0.0)
     private let activityState = BehaviorRelay<ActivityState>(value: .stationary)
+    private let isRunning = BehaviorRelay<Bool>(value: true)
     private let disposeBag = DisposeBag()
     
     init() {
@@ -73,7 +75,17 @@ class PaceViewModel {
             }.bind(to: self.activityState)
             .disposed(by: disposeBag)
         
-        let timer = input.runningTimer
+        self.activityState.map { state -> Bool in
+            if state == .running {
+                return true
+            } else {
+                return false
+            }
+        }.bind(to: self.isRunning)
+        .disposed(by: self.disposeBag)
+        
+        let runningTimer = input.runningTimer
+            .withLatestFrom(self.isRunning)
             .flatMapLatest { isRunning in
                 isRunning ? Observable<Int>
                     .interval(.seconds(1), scheduler: MainScheduler.instance).map { _ in true } : .empty()
@@ -82,10 +94,22 @@ class PaceViewModel {
                 self.timeCount += 1
                 return self.timeCount
             }
+        
+        let walkingTimer = input.runningTimer
+            .withLatestFrom(self.isRunning)
+            .flatMapLatest { isRunning in
+                isRunning == false ? Observable<Int>
+                    .interval(.seconds(1), scheduler: MainScheduler.instance).map { _ in true } : .empty()
+            }.map { [weak self] countable -> Int in
+                guard let self = self else { return 0 }
+                self.walkingTime += 1
+                return self.walkingTime
+            }
           
         return Output(activity: self.activityState.asObservable(),
                       distance: self.totalDistance.asObservable(),
-                      timer: timer)
+                      runningTimer: runningTimer,
+                      walkingTimer: walkingTimer)
     }
 }
 
