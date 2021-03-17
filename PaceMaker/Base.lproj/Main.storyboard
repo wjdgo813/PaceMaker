@@ -77,6 +77,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Pause"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zlp-mK-LS7">
+                                <rect key="frame" x="186" y="543" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7kx-GX-UVi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -84,6 +91,7 @@
                     <connections>
                         <outlet property="activityLabel" destination="9Ie-H3-SBz" id="8Nw-4J-cWc"/>
                         <outlet property="pauseButton" destination="76p-8a-h2H" id="vGz-AJ-yuk"/>
+                        <outlet property="speedLabel" destination="Zlp-mK-LS7" id="nAq-QR-yty"/>
                         <outlet property="timerLabel" destination="yKW-fZ-ip2" id="OJI-eU-ATb"/>
                     </connections>
                 </viewController>

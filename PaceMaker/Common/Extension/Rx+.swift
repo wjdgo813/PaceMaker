@@ -7,6 +7,7 @@
 
 import RxSwift
 import RxCocoa
+import CoreLocation
 
 extension Reactive where Base: UIViewController{
     var viewDidload: ControlEvent<Void>{

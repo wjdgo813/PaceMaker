@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import CoreMotion
-import CoreLocation
 
 import RxSwift
 import RxCocoa
@@ -22,6 +20,7 @@ class PaceViewController: UIViewController {
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var speedLabel: UILabel!
     
     private let viewModel = PaceViewModel()
     private let startRunning = BehaviorRelay<Bool>(value: true)
@@ -33,6 +32,9 @@ class PaceViewController: UIViewController {
         self.setBind()
         self.bindUI()
     }
+}
+
+extension PaceViewController {
     
     private func setupUI() {
             
