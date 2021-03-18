@@ -25,7 +25,14 @@ class PaceViewModel {
         let walkingTimer   : Observable<Int>
     }
     
-    private let locationManager = CLLocationManager()
+    private lazy var locationManager: CLLocationManager = {
+        let manager = CLLocationManager()
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.activityType = .fitness
+        manager.distanceFilter = kCLDistanceFilterNone
+        return manager
+    }()
+    
     private let motionManager   = CMMotionActivityManager()
     private var timeCount = 0
     private var walkingTime = 0
@@ -85,9 +92,9 @@ class PaceViewModel {
         .disposed(by: self.disposeBag)
         
         let runningTimer = input.runningTimer
-            .withLatestFrom(self.isRunning)
-            .flatMapLatest { isRunning in
-                isRunning ? Observable<Int>
+            .withLatestFrom(self.isRunning) { ($0,$1) }
+            .flatMapLatest { isPause, isRunning in
+                 isPause && isRunning ? Observable<Int>
                     .interval(.seconds(1), scheduler: MainScheduler.instance).map { _ in true } : .empty()
             }.map { [weak self] countable -> Int in
                 guard let self = self else { return 0 }
@@ -96,9 +103,9 @@ class PaceViewModel {
             }
         
         let walkingTimer = input.runningTimer
-            .withLatestFrom(self.isRunning)
-            .flatMapLatest { isRunning in
-                isRunning == false ? Observable<Int>
+            .withLatestFrom(self.isRunning){($0,$1)}
+            .flatMapLatest { (isPause,isRunning) in
+                isPause && isRunning == false ? Observable<Int>
                     .interval(.seconds(1), scheduler: MainScheduler.instance).map { _ in true } : .empty()
             }.map { [weak self] countable -> Int in
                 guard let self = self else { return 0 }
@@ -143,5 +150,13 @@ extension PaceViewModel {
             
             return Disposables.create()
         }
+    }
+}
+
+
+//MARK: Calculator Pace
+extension PaceViewModel {
+    private func paceInSeconds (minutes:Double, seconds: Double, distance: Double) -> Double {
+        return ((minutes*60) + seconds) / distance
     }
 }

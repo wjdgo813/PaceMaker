@@ -8,7 +8,7 @@ import CoreLocation
 import RxSwift
 import RxCocoa
 
-class RxCLLocationDelegateProxy:DelegateProxy<CLLocationManager, CLLocationManagerDelegate>, DelegateProxyType {
+class RxCLLocationDelegateProxy: DelegateProxy<CLLocationManager, CLLocationManagerDelegate>, DelegateProxyType, CLLocationManagerDelegate {
     static func registerKnownImplementations() {
         self.register { manager -> RxCLLocationDelegateProxy in
             RxCLLocationDelegateProxy(parentObject: manager, delegateProxy: self)

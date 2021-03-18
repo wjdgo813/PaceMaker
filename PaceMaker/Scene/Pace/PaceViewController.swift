@@ -16,11 +16,13 @@ enum ActivityState: String {
     case running
 }
 
-class PaceViewController: UIViewController {
-    @IBOutlet weak var activityLabel: UILabel!
-    @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var speedLabel: UILabel!
+final class PaceViewController: UIViewController {
+    @IBOutlet private weak var backgroundImageView: UIImageView!
+    @IBOutlet private weak var pauseButton: UIButton!
+    @IBOutlet private weak var paceLabel: UILabel!
+    @IBOutlet private weak var walkingTimeLabel: UILabel!
+    @IBOutlet private weak var durationLabel: UILabel!
+    @IBOutlet private weak var distanceLabel: UILabel!
     
     private let viewModel = PaceViewModel()
     private let startRunning = BehaviorRelay<Bool>(value: true)
@@ -41,17 +43,26 @@ extension PaceViewController {
     }
     
     private func setBind() {
-        let output = self.viewModel.transform(input: PaceViewModel.Input(tracking: driverUtility.signalViewDidAppear(),
+        let output = self.viewModel.transform(input: PaceViewModel.Input(tracking:driverUtility.signalViewDidAppear(),
                                                                          runningTimer: startRunning.asObservable()))
         
         output.activity
             .subscribe(onNext: { [weak self] state in
-                self?.activityLabel.text = state.rawValue
+                
         }).disposed(by: self.disposeBag)
         
         output.runningTimer
             .subscribe(onNext: { [weak self] timer in
-                self?.timerLabel.text = "\(timer)"
+                self?.durationLabel.text = "\(timer)"
+            }).disposed(by: self.disposeBag)
+        
+        output.walkingTimer
+            .subscribe(onNext: { [weak self] timer in
+                self?.walkingTimeLabel.text = "\(timer)"
+            }).disposed(by: self.disposeBag)
+        
+        output.distance.subscribe(onNext: { [weak self] totalDistance in
+            self?.distanceLabel.text = "\(totalDistance)"
         }).disposed(by: self.disposeBag)
     }
     
