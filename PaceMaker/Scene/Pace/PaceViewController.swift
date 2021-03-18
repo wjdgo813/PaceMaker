@@ -64,6 +64,15 @@ extension PaceViewController {
         output.distance.subscribe(onNext: { [weak self] totalDistance in
             self?.distanceLabel.text = "\(totalDistance)"
         }).disposed(by: self.disposeBag)
+        
+        output.doNotWalking
+            .subscribe(onNext: { [weak self] _ in
+                let alert = UIAlertController(title: "", message: "그만 걸어라", preferredStyle: UIAlertController.Style.alert)
+                let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                        }
+                alert.addAction(okAction)
+                self?.present(alert, animated: false, completion: nil)
+        }).disposed(by: self.disposeBag)
     }
     
     private func bindUI() {
@@ -72,11 +81,5 @@ extension PaceViewController {
             .map { !$0 }
             .bind(to: self.startRunning)
             .disposed(by: self.disposeBag)
-    }
-}
-
-extension PaceViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
     }
 }

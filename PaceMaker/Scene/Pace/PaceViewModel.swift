@@ -21,6 +21,7 @@ class PaceViewModel {
     struct Output {
         let activity: Observable<ActivityState>
         let distance: Observable<Double>
+        let doNotWalking   : Observable<Void>
         let runningTimer   : Observable<Int>
         let walkingTimer   : Observable<Int>
     }
@@ -33,14 +34,16 @@ class PaceViewModel {
         return manager
     }()
     
-    private let motionManager   = CMMotionActivityManager()
-    private var timeCount = 0
+    private var timeCount   = 0
     private var walkingTime = 0
-    private let locations = BehaviorRelay<[CLLocation]>(value: [])
+    private var limitedWalkingTime = 0
+    
+    private let motionManager   = CMMotionActivityManager()
+    private let locations     = BehaviorRelay<[CLLocation]>(value: [])
     private let totalDistance = BehaviorRelay<Double>(value: 0.0)
     private let activityState = BehaviorRelay<ActivityState>(value: .stationary)
-    private let isRunning = BehaviorRelay<Bool>(value: true)
-    private let disposeBag = DisposeBag()
+    private let isRunning     = BehaviorRelay<Bool>(value: true)
+    private let disposeBag    = DisposeBag()
     
     init() {
         self.setLocationManager()
@@ -113,9 +116,18 @@ class PaceViewModel {
                 self.walkingTime += 1
                 return self.walkingTime
             }
-          
+        
+        let doNotWalking = self.isRunning
+            .flatMapLatest { isWalking in
+                isWalking == false ? Observable<Int>
+                    .interval(.seconds(1), scheduler: MainScheduler.instance) : .empty()
+            }.filter {
+                $0 > 300
+            }.mapToVoid()
+        
         return Output(activity: self.activityState.asObservable(),
                       distance: self.totalDistance.asObservable(),
+                      doNotWalking: doNotWalking,
                       runningTimer: runningTimer,
                       walkingTimer: walkingTimer)
     }
