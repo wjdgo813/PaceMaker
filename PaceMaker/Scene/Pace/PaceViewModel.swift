@@ -51,6 +51,7 @@ class PaceViewModel {
         self.locationManager.rx
             .updateLocations
             .withLatestFrom(self.locations) { ($0,$1) }
+            .delay(.microseconds(500), scheduler: MainScheduler.instance)
             .map { (newLocation, oldLocations) -> [CLLocation] in
                 var locations = oldLocations
                 locations.append(newLocation)

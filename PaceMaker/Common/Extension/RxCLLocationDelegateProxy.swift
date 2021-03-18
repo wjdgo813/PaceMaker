@@ -30,7 +30,7 @@ extension Reactive where Base: CLLocationManager {
     }
     
     var updateLocations: Observable<CLLocation> {
-        return delegate.methodInvoked(#selector(CLLocationManagerDelegate.locationManager(_:didUpdateLocations:))).map { $0.first! as! CLLocation }
+        return delegate.methodInvoked(#selector(CLLocationManagerDelegate.locationManager(_:didUpdateLocations:))).map { ($0.last! as! NSArray).lastObject as! CLLocation }
     }
 }
 

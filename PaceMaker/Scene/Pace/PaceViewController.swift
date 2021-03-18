@@ -9,7 +9,7 @@ import UIKit
 
 import RxSwift
 import RxCocoa
-
+import CoreLocation
 enum ActivityState: String {
     case stationary
     case walking
@@ -72,5 +72,11 @@ extension PaceViewController {
             .map { !$0 }
             .bind(to: self.startRunning)
             .disposed(by: self.disposeBag)
+    }
+}
+
+extension PaceViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
     }
 }
