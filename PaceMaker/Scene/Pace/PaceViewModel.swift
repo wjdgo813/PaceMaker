@@ -21,6 +21,7 @@ class PaceViewModel {
     struct Output {
         let activity: Observable<ActivityState>
         let distance: Observable<Double>
+        let turnOffVibrator: Observable<Void>
         let doNotWalking   : Observable<Void>
         let runningTimer   : Observable<Int>
         let walkingTimer   : Observable<Int>
@@ -86,14 +87,16 @@ class PaceViewModel {
             }.bind(to: self.activityState)
             .disposed(by: disposeBag)
         
-        self.activityState.map { state -> Bool in
-            if state == .running {
-                return true
-            } else {
-                return false
-            }
-        }.bind(to: self.isRunning)
-        .disposed(by: self.disposeBag)
+        self.activityState
+            
+            .map { state -> Bool in
+                if state == .running {
+                    return true
+                } else {
+                    return false
+                }
+            }.bind(to: self.isRunning)
+            .disposed(by: self.disposeBag)
         
         let runningTimer = input.runningTimer
             .withLatestFrom(self.isRunning) { ($0,$1) }
@@ -121,12 +124,15 @@ class PaceViewModel {
             .flatMapLatest { isWalking in
                 isWalking == false ? Observable<Int>
                     .interval(.seconds(1), scheduler: MainScheduler.instance) : .empty()
-            }.filter {
+            }
+            .filter {
                 $0 > 300
-            }.mapToVoid()
+            }
+            .mapToVoid()
         
-        return Output(activity: self.activityState.asObservable(),
+        return Output(activity: self.activityState.asObservable().share(),
                       distance: self.totalDistance.asObservable(),
+                      turnOffVibrator:
                       doNotWalking: doNotWalking,
                       runningTimer: runningTimer,
                       walkingTimer: walkingTimer)

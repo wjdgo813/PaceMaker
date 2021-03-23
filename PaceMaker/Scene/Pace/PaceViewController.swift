@@ -14,9 +14,19 @@ enum ActivityState: String {
     case stationary
     case walking
     case running
+    
+    func isTurnOffGenerator(after: ActivityState) -> Bool {
+        switch (self, after) {
+        case (.stationary, .running),
+             (.walking, .running):
+            return true
+        default:
+            return false
+        }
+    }
 }
 
-final class PaceViewController: UIViewController {
+final class PaceViewController: UIViewController, Alertable {
     @IBOutlet private weak var backgroundImageView: UIImageView!
     @IBOutlet private weak var pauseButton: UIButton!
     @IBOutlet private weak var paceLabel: UILabel!
@@ -24,8 +34,9 @@ final class PaceViewController: UIViewController {
     @IBOutlet private weak var durationLabel: UILabel!
     @IBOutlet private weak var distanceLabel: UILabel!
     
-    private let viewModel = PaceViewModel()
     private let startRunning = BehaviorRelay<Bool>(value: true)
+    private let impactGenerator = UIImpactFeedbackGenerator(style: .medium)
+    private let viewModel = PaceViewModel()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -38,10 +49,7 @@ final class PaceViewController: UIViewController {
 
 extension PaceViewController {
     
-    private func setupUI() {
-            
-    }
-    
+    private func setupUI() { }
     private func setBind() {
         let output = self.viewModel.transform(input: PaceViewModel.Input(tracking:driverUtility.signalViewDidAppear(),
                                                                          runningTimer: startRunning.asObservable()))
@@ -67,6 +75,7 @@ extension PaceViewController {
         
         output.doNotWalking
             .subscribe(onNext: { [weak self] _ in
+                self?.impactGenerator.impactOccurred()
                 let alert = UIAlertController(title: "", message: "그만 걸어라", preferredStyle: UIAlertController.Style.alert)
                 let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
                         }
@@ -81,5 +90,15 @@ extension PaceViewController {
             .map { !$0 }
             .bind(to: self.startRunning)
             .disposed(by: self.disposeBag)
+        
+        self.pauseButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                let keep = UIAlertAction(title: "Keep Running", style: .default)
+                let finish = UIAlertAction(title: "Stop Running", style: .default) { (action) in
+                    
+                }
+                
+                self?.showAlert(title: "잠시 정지하고 있어요", message: "달리기를 종료할까요?", actions: keep,finish)
+            }).disposed(by: self.disposeBag)
     }
 }
