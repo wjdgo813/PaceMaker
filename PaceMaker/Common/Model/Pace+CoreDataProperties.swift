@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension Pace {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Pace> {
         return NSFetchRequest<Pace>(entityName: "Pace")

@@ -20,14 +20,8 @@ class PaceDataManager {
         return container
     }()
     
-    func initialize() {
-        
-    }
-    
-    func save(runDate: Date,
-              distance: Double,
-              duration: Int64,
-              walking: Int64,
+    func save(runDate: Date,distance: Double,
+              duration: Int64,walking: Int64,
               pace: String,
               onSuccess: @escaping ((Bool) -> Void)) {
         let context = self.persistentContainer.viewContext
@@ -57,6 +51,7 @@ class PaceDataManager {
         } catch let error as NSError {
             print("Could not fetch🥺: \(error), \(error.userInfo)")
         }
+        
         
         return paces
     }
