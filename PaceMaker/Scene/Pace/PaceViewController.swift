@@ -85,6 +85,8 @@ extension PaceViewController {
     }
     
     private func bindUI() {
+//        PaceDataManager.shared.
+        
         self.pauseButton.rx.tap
             .withLatestFrom(startRunning)
             .map { !$0 }
@@ -92,14 +94,19 @@ extension PaceViewController {
             .disposed(by: self.disposeBag)
         
         self.pauseButton.rx.tap
-            .subscribe(onNext: { [weak self] in
+            .map {
+                return Record(date: Date(),
+                                    distance: 200,
+                                    duration: 7777,
+                                    walking: 2222,
+                                    pace: "jhh")
+            }
+            .flatMap { record in
+                return PaceDataManager.shared.save(record: record)
+            }
+            .subscribe(onNext: { [weak self] record in
                 let keep = UIAlertAction(title: "Keep Running", style: .default)
                 let finish = UIAlertAction(title: "Stop Running", style: .default) { (action) in
-                    let record = Record(date: Date(),
-                                        distance: 0,
-                                        duration: 0,
-                                        walking: 0,
-                                        pace: "jhh")
                     ContainerViewController.target?.execute(scene: .result(record))
                 }
                 

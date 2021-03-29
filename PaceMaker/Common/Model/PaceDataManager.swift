@@ -7,6 +7,8 @@
 
 import Foundation
 import CoreData
+import RxSwift
+import RxCocoa
 
 class PaceDataManager {
     static let shared = PaceDataManager()

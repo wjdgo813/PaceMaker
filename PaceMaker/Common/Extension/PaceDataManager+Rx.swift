@@ -8,16 +8,16 @@
 import RxSwift
 import RxCocoa
 
-extension Reactive where Base: PaceDataManager {
+extension PaceDataManager {
     
-    func save(record: Record) -> Observable<Void> {
+    func save(record: Record) -> Observable<Record> {
         return Observable.create { observer in
             PaceDataManager.shared.save(runDate: record.date,
                                         distance: record.distance,
                                         duration: Int64(record.duration),
                                         walking: Int64(record.walking),
                                         pace: record.pace) { (finished) in
-                observer.onNext(())
+                observer.onNext(record)
                 observer.onCompleted()
             }
             
@@ -25,7 +25,7 @@ extension Reactive where Base: PaceDataManager {
         }
     }
     
-    func query(_ runDate: Date) -> Observable<[Pace]> {
+    func query(runDate: Date) -> Observable<[Pace]> {
         return Observable.create { observer in
             let paces = PaceDataManager.shared.query(runDate)
             observer.onNext(paces)
