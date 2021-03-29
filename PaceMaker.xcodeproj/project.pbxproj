@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6F0AEF1525F62E78009DA436 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0AEF1425F62E78009DA436 /* AppDelegate.swift */; };
 		6F0AEF1725F62E78009DA436 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0AEF1625F62E78009DA436 /* SceneDelegate.swift */; };
-		6F0AEF1925F62E78009DA436 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0AEF1825F62E78009DA436 /* ViewController.swift */; };
+		6F0AEF1925F62E78009DA436 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0AEF1825F62E78009DA436 /* HomeViewController.swift */; };
 		6F0AEF1C25F62E78009DA436 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F0AEF1A25F62E78009DA436 /* Main.storyboard */; };
 		6F0AEF1E25F62E78009DA436 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F0AEF1D25F62E78009DA436 /* Assets.xcassets */; };
 		6F0AEF2125F62E78009DA436 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F0AEF1F25F62E78009DA436 /* LaunchScreen.storyboard */; };
@@ -63,7 +63,7 @@
 		6F0AEF1125F62E78009DA436 /* PaceMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaceMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F0AEF1425F62E78009DA436 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F0AEF1625F62E78009DA436 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6F0AEF1825F62E78009DA436 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6F0AEF1825F62E78009DA436 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6F0AEF1B25F62E78009DA436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6F0AEF1D25F62E78009DA436 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F0AEF2025F62E78009DA436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				6F0C0A7125F787E0008EDF20 /* ContainerViewController.swift */,
-				6F0AEF1825F62E78009DA436 /* ViewController.swift */,
+				6F0AEF1825F62E78009DA436 /* HomeViewController.swift */,
 				6F32C25D260A109B00027863 /* Calendar */,
 				6F32C24F260A0FB100027863 /* Result */,
 				6F50491825FA4D31009DE896 /* Pace */,
@@ -546,7 +546,7 @@
 				6F96DA9A26020C5B008E8D89 /* RxCLLocationDelegateProxy.swift in Sources */,
 				6F32C28E260A174300027863 /* PaceDataManager.swift in Sources */,
 				6F32C289260A167600027863 /* Pace+CoreDataProperties.swift in Sources */,
-				6F0AEF1925F62E78009DA436 /* ViewController.swift in Sources */,
+				6F0AEF1925F62E78009DA436 /* HomeViewController.swift in Sources */,
 				6F0C0A8B25F792AB008EDF20 /* ViewController+.swift in Sources */,
 				6F206D37260A0A5F00641B99 /* Alertable.swift in Sources */,
 				6F0AEF1525F62E78009DA436 /* AppDelegate.swift in Sources */,

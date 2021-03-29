@@ -23,7 +23,7 @@ extension PaceScene {
     var viewController: UIViewController {
         switch self {
         case .home:
-            let vc: ViewController = UIStoryboard.init(storyboard: .main).instantiateViewController()
+            let vc: HomeViewController = UIStoryboard.init(storyboard: .main).instantiateViewController()
             return vc
             
         case .pace:

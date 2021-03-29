@@ -35,9 +35,10 @@ final class PaceViewController: UIViewController, Alertable {
     @IBOutlet private weak var distanceLabel: UILabel!
     
     private let startRunning = BehaviorRelay<Bool>(value: true)
-    private let impactGenerator = UIImpactFeedbackGenerator(style: .medium)
+    private let impactGenerator = UIImpactFeedbackGenerator(style: .heavy)
     private let viewModel = PaceViewModel()
     private let disposeBag = DisposeBag()
+    var limitedWalkingTime = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,7 @@ extension PaceViewController {
     
     private func setupUI() { }
     private func setBind() {
-        let output = self.viewModel.transform(input: PaceViewModel.Input(tracking:driverUtility.signalViewDidAppear(),
+        let output = self.viewModel.transform(input: PaceViewModel.Input(tracking: driverUtility.signalViewDidAppear().map{ [weak self] _ in self?.limitedWalkingTime ?? 0 },
                                                                          runningTimer: startRunning.asObservable()))
         
         output.activity
@@ -60,11 +61,13 @@ extension PaceViewController {
         }).disposed(by: self.disposeBag)
         
         output.runningTimer
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] timer in
                 self?.durationLabel.text = "\(timer)"
             }).disposed(by: self.disposeBag)
         
         output.walkingTimer
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] timer in
                 self?.walkingTimeLabel.text = "\(timer)"
             }).disposed(by: self.disposeBag)
@@ -74,6 +77,7 @@ extension PaceViewController {
         }).disposed(by: self.disposeBag)
         
         output.doNotWalking
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 self?.impactGenerator.impactOccurred()
                 let alert = UIAlertController(title: "", message: "그만 걸어라", preferredStyle: UIAlertController.Style.alert)
@@ -85,7 +89,6 @@ extension PaceViewController {
     }
     
     private func bindUI() {
-//        PaceDataManager.shared.
         
         self.pauseButton.rx.tap
             .withLatestFrom(startRunning)

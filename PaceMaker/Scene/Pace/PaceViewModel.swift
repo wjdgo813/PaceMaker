@@ -14,7 +14,7 @@ import RxCocoa
 
 class PaceViewModel {
     struct Input {
-        let tracking: Observable<Void>
+        let tracking: Observable<Int>
         let runningTimer: Observable<Bool>
     }
     
@@ -98,9 +98,10 @@ class PaceViewModel {
             .disposed(by: self.disposeBag)
         
         let runningTimer = input.runningTimer
+            .observe(on: ConcurrentDispatchQueueScheduler(qos: .background))
             .flatMapLatest { isPause in
                  isPause ? Observable<Int>
-                    .interval(.seconds(1), scheduler: MainScheduler.instance).map { _ in true } : .empty()
+                    .interval(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)).map { _ in true } : .empty()
             }.map { [weak self] countable -> Int in
                 guard let self = self else { return 0 }
                 self.timeCount += 1
@@ -111,7 +112,7 @@ class PaceViewModel {
             .withLatestFrom(self.isRunning){($0,$1)}
             .flatMapLatest { (isPause,isRunning) in
                 isPause && isRunning == false ? Observable<Int>
-                    .interval(.seconds(1), scheduler: MainScheduler.instance).map { _ in true } : .empty()
+                    .interval(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)).map { _ in true } : .empty()
             }.map { [weak self] countable -> Int in
                 guard let self = self else { return 0 }
                 self.walkingTime += 1
@@ -121,10 +122,11 @@ class PaceViewModel {
         let doNotWalking = self.isRunning
             .flatMapLatest { isWalking in
                 isWalking == false ? Observable<Int>
-                    .interval(.seconds(1), scheduler: MainScheduler.instance) : .empty()
+                    .interval(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)) : .empty()
             }
-            .filter {
-                $0 > 300
+            .withLatestFrom(input.tracking) {($0,$1)}
+            .filter { currentWalkingTime, limitedWalkingTime in
+                currentWalkingTime > (limitedWalkingTime * 60)
             }
             .mapToVoid()
         

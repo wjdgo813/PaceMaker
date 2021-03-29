@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZJL-un-JbV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZJL-un-JbV">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,19 +41,14 @@
         <!--Item 1-->
         <scene sceneID="Dhg-LY-OyM">
             <objects>
-                <viewController id="M4E-ZU-k0K" customClass="ViewController" customModule="PaceMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M4E-ZU-k0K" customClass="HomeViewController" customModule="PaceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aRF-BM-5Ye">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2C0-Vp-DuS">
-                                <rect key="frame" x="192" y="433" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Go"/>
-                                <connections>
-                                    <segue destination="nKT-Ke-jF7" kind="presentation" id="nUi-ei-LBN"/>
-                                </connections>
-                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home" translatesAutoresizingMaskIntoConstraints="NO" id="ziG-sK-L48">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THr-AR-oEQ">
                                 <rect key="frame" x="274" y="67" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -62,16 +57,51 @@
                                     <segue destination="h3I-UI-NAb" kind="presentation" id="PuP-HK-ieF"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Guide" translatesAutoresizingMaskIntoConstraints="NO" id="AOQ-ro-VLD">
+                                <rect key="frame" x="20" y="136" width="306" height="195"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omQ-ed-Uql">
+                                <rect key="frame" x="20" y="347" width="166" height="54"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="166" id="jMa-bF-Dng"/>
+                                    <constraint firstAttribute="height" constant="54" id="vsn-s9-e6h"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2C0-Vp-DuS">
+                                <rect key="frame" x="192" y="707" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go"/>
+                                <connections>
+                                    <segue destination="nKT-Ke-jF7" kind="presentation" id="nUi-ei-LBN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="50R-5T-jLC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AOQ-ro-VLD" firstAttribute="top" secondItem="50R-5T-jLC" secondAttribute="top" constant="92" id="2fh-12-d7M"/>
+                            <constraint firstItem="omQ-ed-Uql" firstAttribute="top" secondItem="AOQ-ro-VLD" secondAttribute="bottom" constant="16" id="LnJ-gR-xQw"/>
+                            <constraint firstItem="omQ-ed-Uql" firstAttribute="leading" secondItem="AOQ-ro-VLD" secondAttribute="leading" id="OST-Fg-XYQ"/>
+                            <constraint firstItem="50R-5T-jLC" firstAttribute="trailing" secondItem="ziG-sK-L48" secondAttribute="trailing" id="RUO-KZ-u2e"/>
+                            <constraint firstItem="ziG-sK-L48" firstAttribute="top" secondItem="aRF-BM-5Ye" secondAttribute="top" id="j3S-HP-7MI"/>
+                            <constraint firstItem="ziG-sK-L48" firstAttribute="leading" secondItem="50R-5T-jLC" secondAttribute="leading" id="qnV-9z-NMO"/>
+                            <constraint firstItem="AOQ-ro-VLD" firstAttribute="leading" secondItem="50R-5T-jLC" secondAttribute="leading" constant="20" id="r43-sV-kzG"/>
+                            <constraint firstAttribute="bottom" secondItem="ziG-sK-L48" secondAttribute="bottom" id="wuc-6D-81c"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="ppd-NN-xy0"/>
                     <navigationItem key="navigationItem" id="4Pe-YZ-oKA"/>
+                    <connections>
+                        <outlet property="timerButton" destination="omQ-ed-Uql" id="Fgm-Bd-zf6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxe-r2-CUf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845" y="265"/>
+            <point key="canvasLocation" x="844.92753623188412" y="264.50892857142856"/>
         </scene>
         <!--Pace View Controller-->
         <scene sceneID="XlV-tb-dzt">
@@ -309,10 +339,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFz-in-yCC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1631.8840579710147" y="264.50892857142856"/>
+            <point key="canvasLocation" x="1816" y="281"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Guide" width="306" height="195"/>
+        <image name="Home" width="504.5" height="672"/>
         <image name="PaceRunning" width="375" height="667"/>
         <image name="pause" width="110" height="110"/>
         <systemColor name="systemBackgroundColor">
