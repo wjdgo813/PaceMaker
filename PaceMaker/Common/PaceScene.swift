@@ -12,7 +12,7 @@ enum PaceScene {
     case pace
     case calendar
     case setting
-    case result
+    case result(Record)
 }
 
 extension PaceScene {
@@ -27,9 +27,18 @@ extension PaceScene {
             return vc
             
         case .pace:
-            let vc: PaceViewController = UIStoryboard.init(storyboard: .main).instantiateViewController()
+            let vc: PaceViewController = PaceViewController.createInstance(())
             return vc
             
+        case .result(let record):
+            let record = Record(date: record.date,
+                                distance: record.distance,
+                                duration: record.duration,
+                                walking: record.walking,
+                                pace: record.pace)
+            
+            let vc: ResultViewController = ResultViewController.createInstance(record)
+            return vc
         default:
             return UIViewController()
         }

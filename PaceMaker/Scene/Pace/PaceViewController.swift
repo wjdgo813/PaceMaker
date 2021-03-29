@@ -95,10 +95,21 @@ extension PaceViewController {
             .subscribe(onNext: { [weak self] in
                 let keep = UIAlertAction(title: "Keep Running", style: .default)
                 let finish = UIAlertAction(title: "Stop Running", style: .default) { (action) in
-                    
+                    let record = Record(date: Date(),
+                                        distance: 0,
+                                        duration: 0,
+                                        walking: 0,
+                                        pace: "jhh")
+                    ContainerViewController.target?.execute(scene: .result(record))
                 }
                 
                 self?.showAlert(title: "잠시 정지하고 있어요", message: "달리기를 종료할까요?", actions: keep,finish)
             }).disposed(by: self.disposeBag)
     }
+}
+
+extension PaceViewController: VCFactorable {
+    public static var storyboardIdentifier = "Main"
+    public static var vcIdentifier = "PaceViewController"
+    public func bindData(value: Void) { }
 }

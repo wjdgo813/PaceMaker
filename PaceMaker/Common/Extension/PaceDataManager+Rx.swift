@@ -10,17 +10,13 @@ import RxCocoa
 
 extension Reactive where Base: PaceDataManager {
     
-    func save(runDate: Date,
-              distance: Double,
-              duration: Int64,
-              walking: Int64,
-              pace: String) -> Observable<Void> {
+    func save(record: Record) -> Observable<Void> {
         return Observable.create { observer in
-            PaceDataManager.shared.save(runDate: runDate,
-                                        distance: distance,
-                                        duration: duration,
-                                        walking: walking,
-                                        pace: pace) { (finished) in
+            PaceDataManager.shared.save(runDate: record.date,
+                                        distance: record.distance,
+                                        duration: Int64(record.duration),
+                                        walking: Int64(record.walking),
+                                        pace: record.pace) { (finished) in
                 observer.onNext(())
                 observer.onCompleted()
             }

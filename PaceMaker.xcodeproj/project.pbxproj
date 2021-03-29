@@ -18,6 +18,8 @@
 		6F0C0A7225F787E0008EDF20 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0C0A7125F787E0008EDF20 /* ContainerViewController.swift */; };
 		6F0C0A7825F78CF1008EDF20 /* Rx+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0C0A7725F78CF1008EDF20 /* Rx+.swift */; };
 		6F0C0A8B25F792AB008EDF20 /* ViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0C0A8A25F792AB008EDF20 /* ViewController+.swift */; };
+		6F0D00DC2611E58800BE5E50 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D00DB2611E58800BE5E50 /* Record.swift */; };
+		6F0D00E12611E79600BE5E50 /* VCFactorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D00E02611E79600BE5E50 /* VCFactorable.swift */; };
 		6F206D37260A0A5F00641B99 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F206D36260A0A5F00641B99 /* Alertable.swift */; };
 		6F32C241260A0D8700027863 /* PaceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F32C240260A0D8700027863 /* PaceScene.swift */; };
 		6F32C246260A0E0900027863 /* StoryBoard+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F32C245260A0E0900027863 /* StoryBoard+.swift */; };
@@ -75,6 +77,8 @@
 		6F0C0A7125F787E0008EDF20 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		6F0C0A7725F78CF1008EDF20 /* Rx+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+.swift"; sourceTree = "<group>"; };
 		6F0C0A8A25F792AB008EDF20 /* ViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+.swift"; sourceTree = "<group>"; };
+		6F0D00DB2611E58800BE5E50 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		6F0D00E02611E79600BE5E50 /* VCFactorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCFactorable.swift; sourceTree = "<group>"; };
 		6F206D36260A0A5F00641B99 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		6F32C240260A0D8700027863 /* PaceScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceScene.swift; sourceTree = "<group>"; };
 		6F32C245260A0E0900027863 /* StoryBoard+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoryBoard+.swift"; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 			children = (
 				6F0AEF1425F62E78009DA436 /* AppDelegate.swift */,
 				6F0AEF1625F62E78009DA436 /* SceneDelegate.swift */,
+				6F0AEF2225F62E78009DA436 /* Info.plist */,
 				6F32C266260A149400027863 /* Resources */,
 				6F0C0A7625F78CE8008EDF20 /* Common */,
 				6FD4A87525F6346600838BAE /* Scene */,
@@ -207,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				6F206D36260A0A5F00641B99 /* Alertable.swift */,
+				6F0D00E02611E79600BE5E50 /* VCFactorable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -234,7 +240,6 @@
 				6F0AEF1A25F62E78009DA436 /* Main.storyboard */,
 				6F0AEF1D25F62E78009DA436 /* Assets.xcassets */,
 				6F0AEF1F25F62E78009DA436 /* LaunchScreen.storyboard */,
-				6F0AEF2225F62E78009DA436 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				6F32C286260A167600027863 /* Pace+CoreDataClass.swift */,
 				6F32C287260A167600027863 /* Pace+CoreDataProperties.swift */,
 				6F32C28D260A174300027863 /* PaceDataManager.swift */,
+				6F0D00DB2611E58800BE5E50 /* Record.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -544,9 +550,11 @@
 				6F0C0A8B25F792AB008EDF20 /* ViewController+.swift in Sources */,
 				6F206D37260A0A5F00641B99 /* Alertable.swift in Sources */,
 				6F0AEF1525F62E78009DA436 /* AppDelegate.swift in Sources */,
+				6F0D00DC2611E58800BE5E50 /* Record.swift in Sources */,
 				6F0AEF1725F62E78009DA436 /* SceneDelegate.swift in Sources */,
 				6F0C0A7825F78CF1008EDF20 /* Rx+.swift in Sources */,
 				6F32C246260A0E0900027863 /* StoryBoard+.swift in Sources */,
+				6F0D00E12611E79600BE5E50 /* VCFactorable.swift in Sources */,
 				6F32C251260A101900027863 /* ResultViewController.swift in Sources */,
 				6F0C0A7225F787E0008EDF20 /* ContainerViewController.swift in Sources */,
 				6F32C24B260A0EAC00027863 /* NSObject+.swift in Sources */,
