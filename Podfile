@@ -8,7 +8,7 @@ target 'PaceMaker' do
   # Pods for PaceMaker
 pod 'RxSwift'
 pod 'RxCocoa'
-pod 'FSCalendar'
+pod 'JTAppleCalendar'
 
 
   target 'PaceMakerTests' do
