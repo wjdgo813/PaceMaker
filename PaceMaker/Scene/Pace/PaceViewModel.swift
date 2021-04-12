@@ -31,6 +31,7 @@ class PaceViewModel {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.activityType = .fitness
         manager.distanceFilter = kCLDistanceFilterNone
+        manager.allowsBackgroundLocationUpdates = true
         return manager
     }()
     
@@ -101,7 +102,8 @@ class PaceViewModel {
             .flatMapLatest { isPlaying in
                 isPlaying ? Observable<Int>
                     .interval(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)).map { _ in true } : .empty()
-            }.map { [weak self] countable -> Int in
+            }.observe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            .debug("jhh runningTimer").map { [weak self] countable -> Int in
                 guard let self = self else { return 0 }
                 self.timeCount += 1
                 return self.timeCount

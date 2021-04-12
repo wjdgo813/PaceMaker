@@ -52,6 +52,17 @@ extension PaceViewController {
     
     private func setupUI() { }
     private func setBind() {
+        let backgroundTime = rx.methodInvoked(#selector(UIApplicationDelegate.applicationDidEnterBackground(_:)))
+            .mapToVoid()
+            .flatMap { Observable.just(Date()) }
+        
+        let foregroundTime = rx.methodInvoked(#selector(UIApplicationDelegate.applicationWillEnterForeground(_:)))
+            .mapToVoid()
+            .flatMap { Observable.just(Date()) }
+        
+        let backgroundTimerTripped = foregroundTime
+            .withLatestFrom(backgroundTime) { $0.timeIntervalSince($1) }
+        
         let output = self.viewModel.transform(input: PaceViewModel.Input(tracking: driverUtility.signalViewDidAppear().map{ [weak self] _ in self?.limitedWalkingTime ?? 0 },
                                                                          runningTimer: startRunning.asObservable()))
         
