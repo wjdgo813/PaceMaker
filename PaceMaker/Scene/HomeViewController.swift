@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
 
-    @IBOutlet weak var timerButton: UIButton!
-    
+    @IBOutlet private weak var timerButton: UIButton!
+    private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
@@ -29,5 +31,12 @@ extension HomeViewController {
         self.timerButton.layer.cornerRadius = 25
         self.timerButton.layer.borderWidth = 1
 //        self.timerButton.layer.borderColor =
+    }
+    
+    private func setBind() {
+        self.timerButton.rx.tap
+            .subscribe(onNext: {
+            
+            }).disposed(by: self.disposeBag)
     }
 }

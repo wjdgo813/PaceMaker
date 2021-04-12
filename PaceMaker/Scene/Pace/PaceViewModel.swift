@@ -38,7 +38,7 @@ class PaceViewModel {
     private var walkingTime = 0
     private var limitedWalkingTime = 0
     
-    private let motionManager   = CMMotionActivityManager()
+    private let motionManager = CMMotionActivityManager()
     private let locations     = BehaviorRelay<[CLLocation]>(value: [])
     private let totalDistance = BehaviorRelay<Double>(value: 0.0)
     private let activityState = BehaviorRelay<ActivityState>(value: .stationary)
@@ -54,7 +54,7 @@ class PaceViewModel {
         self.locationManager.rx
             .updateLocations
             .withLatestFrom(self.locations) { ($0,$1) }
-            .delay(.microseconds(500), scheduler: MainScheduler.instance)
+            .delay(.microseconds(300), scheduler: MainScheduler.instance)
             .map { (newLocation, oldLocations) -> [CLLocation] in
                 var locations = oldLocations
                 locations.append(newLocation)
@@ -82,7 +82,7 @@ class PaceViewModel {
         input.tracking
             .flatMap { [weak self] _ -> Observable<ActivityState> in
                 guard let self = self else { return .empty() }
-                return self.startTrackingActivityType().unwrap()
+                return self.startTrackingActivityType().unwrap().debug("jhh startTrackingActivityType")
             }.bind(to: self.activityState)
             .disposed(by: disposeBag)
         
@@ -98,9 +98,8 @@ class PaceViewModel {
             .disposed(by: self.disposeBag)
         
         let runningTimer = input.runningTimer
-            .observe(on: ConcurrentDispatchQueueScheduler(qos: .background))
-            .flatMapLatest { isPause in
-                 isPause ? Observable<Int>
+            .flatMapLatest { isPlaying in
+                isPlaying ? Observable<Int>
                     .interval(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)).map { _ in true } : .empty()
             }.map { [weak self] countable -> Int in
                 guard let self = self else { return 0 }
@@ -109,9 +108,9 @@ class PaceViewModel {
             }
         
         let walkingTimer = input.runningTimer
-            .withLatestFrom(self.isRunning){($0,$1)}
-            .flatMapLatest { (isPause,isRunning) in
-                isPause && isRunning == false ? Observable<Int>
+            .flatMap { isPlaying in self.isRunning.map { (isPlaying,$0) } }
+            .flatMapLatest { (isPlaying,isRunning) in
+                (isPlaying == true && isRunning == false) ? Observable<Int>
                     .interval(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)).map { _ in true } : .empty()
             }.map { [weak self] countable -> Int in
                 guard let self = self else { return 0 }
@@ -155,19 +154,16 @@ extension PaceViewModel {
                 DispatchQueue.main.async {
                     if activity.walking {
                         observer.onNext(.walking)
-                        observer.onCompleted()
                     } else if activity.stationary {
                         observer.onNext(.stationary)
-                        observer.onCompleted()
                     } else if activity.running || activity.automotive {
                         observer.onNext(.running)
-                        observer.onCompleted()
                     }
                 }
             }
             
             return Disposables.create()
-        }
+        }.share()
     }
 }
 
