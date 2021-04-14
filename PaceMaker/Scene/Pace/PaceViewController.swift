@@ -74,18 +74,23 @@ extension PaceViewController {
         output.runningTimer
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] timer in
-                self?.durationLabel.text = "\(timer)"
+                self?.durationLabel.text = timer
             }).disposed(by: self.disposeBag)
         
         output.walkingTimer
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] timer in
-                self?.walkingTimeLabel.text = "\(timer)"
+                self?.walkingTimeLabel.text = timer
             }).disposed(by: self.disposeBag)
         
         output.distance.subscribe(onNext: { [weak self] totalDistance in
-            self?.distanceLabel.text = "\(totalDistance)"
+            self?.distanceLabel.text = totalDistance
         }).disposed(by: self.disposeBag)
+        
+        output.pace
+            .subscribe(onNext: { [weak self] pace in
+                self?.paceLabel.text = pace
+            }).disposed(by: self.disposeBag)
         
         output.doNotWalking
             .observe(on: MainScheduler.instance)

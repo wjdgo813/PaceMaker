@@ -20,10 +20,11 @@ class PaceViewModel {
     
     struct Output {
         let activity: Observable<ActivityState>
-        let distance: Observable<Double>
+        let distance: Observable<String>
         let doNotWalking   : Observable<Void>
-        let runningTimer   : Observable<Int>
-        let walkingTimer   : Observable<Int>
+        let runningTimer   : Observable<String>
+        let walkingTimer   : Observable<String>
+        let pace           : Observable<String>
     }
     
     private lazy var locationManager: CLLocationManager = {
@@ -52,8 +53,11 @@ class PaceViewModel {
     
     func transform(input: Input) -> Output {
 
-        self.locationManager.rx
+        let updateLocation = self.locationManager.rx
             .updateLocations
+            .filter { $0.horizontalAccuracy < 40 }
+        
+        updateLocation
             .withLatestFrom(self.locations) { ($0,$1) }
             .delay(.microseconds(300), scheduler: MainScheduler.instance)
             .map { (newLocation, oldLocations) -> [CLLocation] in
@@ -64,12 +68,20 @@ class PaceViewModel {
             .bind(to: self.locations)
             .disposed(by: self.disposeBag)
         
-        let distance = self.locationManager.rx
-            .updateLocations
+        let distance = updateLocation
             .withLatestFrom(self.locations) { ($0,$1) }
             .map { (newLocation, oldLocations) -> Double in
                 guard let last = oldLocations.last else { return 0.0 }
                 return last.distance(from: newLocation)
+            }
+        
+        //pace 공식: 전체 시간(seconds) / 전체 거리(km)
+        let pace = updateLocation
+            .withLatestFrom(self.totalDistance) { ($0,$1) }
+            .map { [weak self] (newLocation, totalDistance) -> String in
+                guard let self = self, self.timeCount > 0 else { return "" }
+                let pace = Int(Double(self.timeCount) / (totalDistance/1000)).toSeconds()
+                return pace
             }
         
         distance
@@ -83,12 +95,12 @@ class PaceViewModel {
         input.tracking
             .flatMap { [weak self] _ -> Observable<ActivityState> in
                 guard let self = self else { return .empty() }
-                return self.startTrackingActivityType().unwrap().debug("jhh startTrackingActivityType")
+                return self.startTrackingActivityType().unwrap().debug("startTrackingActivityType")
             }.bind(to: self.activityState)
             .disposed(by: disposeBag)
         
         self.activityState
-            .debug("jhh activityState")
+            .debug("activityState")
             .map { state -> Bool in
                 if state == .running {
                     return true
@@ -103,7 +115,7 @@ class PaceViewModel {
                 isPlaying ? Observable<Int>
                     .interval(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)).map { _ in true } : .empty()
             }.observe(on: ConcurrentDispatchQueueScheduler(qos: .background))
-            .debug("jhh runningTimer").map { [weak self] countable -> Int in
+            .debug("runningTimer").map { [weak self] countable -> Int in
                 guard let self = self else { return 0 }
                 self.timeCount += 1
                 return self.timeCount
@@ -132,10 +144,11 @@ class PaceViewModel {
             .mapToVoid()
         
         return Output(activity: self.activityState.asObservable().share(),
-                      distance: self.totalDistance.asObservable(),
+                      distance: self.totalDistance.map{ $0.toKiloMeter() }.asObservable(),
                       doNotWalking: doNotWalking,
-                      runningTimer: runningTimer,
-                      walkingTimer: walkingTimer)
+                      runningTimer: runningTimer.map { $0.toMinutes() },
+                      walkingTimer: walkingTimer.map { $0.toMinutes() },
+                      pace: pace.map { String($0) })
     }
 }
 
