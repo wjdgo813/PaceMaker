@@ -10,7 +10,7 @@ import RxCocoa
 
 extension PaceDataManager {
     
-    func save(record: Record) -> Observable<Record> {
+    func rxSave(record: Record) -> Observable<Record> {
         return Observable.create { observer in
             PaceDataManager.shared.save(runDate: record.date,
                                         distance: record.distance,
@@ -25,9 +25,9 @@ extension PaceDataManager {
         }
     }
     
-    func query(runDate: Date) -> Observable<[Pace]> {
+    func rxQuery(runDate: Date) -> Observable<[Pace]> {
         return Observable.create { observer in
-            let paces = PaceDataManager.shared.query(runDate)
+            let paces = PaceDataManager.shared.query(runDate: runDate)
             observer.onNext(paces)
             observer.onCompleted()
             
@@ -35,7 +35,17 @@ extension PaceDataManager {
         }
     }
     
-    func deletePace(id: Int64) -> Observable<Void> {
+    func rxQuery()  -> Observable<[Pace]> {
+        return Observable.create { observer in
+            let paces = PaceDataManager.shared.query()
+            observer.onNext(paces)
+            observer.onCompleted()
+            
+            return Disposables.create()
+        }
+    }
+    
+    func rxDeletePace(id: Int64) -> Observable<Void> {
         return Observable.create { observer in
             PaceDataManager.shared.deletePace(id: id) { (finished) in
                 observer.onNext(())

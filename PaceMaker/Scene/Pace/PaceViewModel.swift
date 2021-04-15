@@ -21,7 +21,8 @@ class PaceViewModel {
     struct Output {
         let activity: Observable<ActivityState>
         let distance: Observable<String>
-        let doNotWalking   : Observable<Void>
+        let doNotWalking    : Observable<Void>
+        let isCurrentRunning: Observable<Void>
         let runningTimer   : Observable<String>
         let walkingTimer   : Observable<String>
         let pace           : Observable<String>
@@ -79,7 +80,7 @@ class PaceViewModel {
         let pace = updateLocation
             .withLatestFrom(self.totalDistance) { ($0,$1) }
             .map { [weak self] (newLocation, totalDistance) -> String in
-                guard let self = self, self.timeCount > 0 else { return "" }
+                guard let self = self, self.timeCount > 0, totalDistance > 0.0 else { return "0:00" }
                 let pace = Int(Double(self.timeCount) / (totalDistance/1000)).toSeconds()
                 return pace
             }
@@ -132,20 +133,24 @@ class PaceViewModel {
                 return self.walkingTime
             }
         
-        let doNotWalking = self.isRunning
+        let differWalkingTime = self.isRunning
+            .distinctUntilChanged()
             .flatMapLatest { isWalking in
                 isWalking == false ? Observable<Int>
                     .interval(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)) : .empty()
-            }
+            }.debug("jhh walkingCount")
             .withLatestFrom(input.tracking) {($0,$1)}
-            .filter { currentWalkingTime, limitedWalkingTime in
-                currentWalkingTime > (limitedWalkingTime * 60)
-            }
-            .mapToVoid()
+            
+        let doNotWalking = differWalkingTime.filter { currentWalkingTime, limitedWalkingTime in
+            currentWalkingTime > (limitedWalkingTime * 60)
+        }.mapToVoid()
+        
+        let isCurrentRunning = self.isRunning.filter { $0 }.mapToVoid()
         
         return Output(activity: self.activityState.asObservable().share(),
                       distance: self.totalDistance.map{ $0.toKiloMeter() }.asObservable(),
                       doNotWalking: doNotWalking,
+                      isCurrentRunning: isCurrentRunning,
                       runningTimer: runningTimer.map { $0.toMinutes() },
                       walkingTimer: walkingTimer.map { $0.toMinutes() },
                       pace: pace.map { String($0) })

@@ -31,6 +31,18 @@ final class ResultViewController: UIViewController {
             .subscribe(onNext: { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)
         }).disposed(by: self.disposeBag)
+        
+        PaceDataManager.shared.rxQuery().debug("PaceDataManager rxQuery")
+            .subscribe(onNext: { paces in
+                paces.forEach { pace in
+                    print("-------")
+                    print(pace.id)
+                    print("\(pace.distance)")
+                    print(String(pace.duration))
+                    print(String(pace.walking))
+                    print(String(pace.pace ?? ""))
+                }
+            }).disposed(by: self.disposeBag)
     }
 }
 

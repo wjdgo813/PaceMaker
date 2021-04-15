@@ -40,7 +40,7 @@ class PaceDataManager {
         }
     }
     
-    func query(_ runDate: Date) -> [Pace] {
+    func query(runDate: Date) -> [Pace] {
         var paces = [Pace]()
         let context = persistentContainer.viewContext
         let request: NSFetchRequest<NSManagedObject> = NSFetchRequest<NSManagedObject>(entityName: "Pace")
@@ -54,6 +54,21 @@ class PaceDataManager {
             print("Could not fetch🥺: \(error), \(error.userInfo)")
         }
         
+        
+        return paces
+    }
+    
+    func query() -> [Pace] {
+        var paces = [Pace]()
+        let context = persistentContainer.viewContext
+        let request: NSFetchRequest<NSManagedObject> = NSFetchRequest<NSManagedObject>(entityName: "Pace")
+        do {
+            if let fetchResult: [Pace] = try context.fetch(request) as? [Pace] {
+                paces = fetchResult
+            }
+        } catch let error as NSError {
+            print("Could not fetch🥺: \(error), \(error.userInfo)")
+        }
         
         return paces
     }
