@@ -35,16 +35,18 @@ class PaceDataManager {
         p.walking = walking
         p.pace = pace
         p.id = ""
+        p.yearMonth = "\(runDate.string(WithFormat: .MMMM)) \(runDate.string(WithFormat: .yyyy))"
         contextSave { success in
             onSuccess(success)
         }
     }
     
-    func query(runDate: Date) -> [Pace] {
+    func query(yearMonth: String) -> [Pace] {
         var paces = [Pace]()
         let context = persistentContainer.viewContext
         let request: NSFetchRequest<NSManagedObject> = NSFetchRequest<NSManagedObject>(entityName: "Pace")
-        let predicate = NSPredicate(format: "runDate == %@", runDate as NSDate)
+        
+        let predicate = NSPredicate(format: "yearMonth == %@", yearMonth)
         request.predicate = predicate
         do {
             if let fetchResult: [Pace] = try context.fetch(request) as? [Pace] {

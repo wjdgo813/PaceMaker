@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,14 +10,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CalendarCell" id="gTV-IL-0wX" customClass="CalendarCell" customModule="PaceMaker" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="186" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="58" height="61"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="186" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="58" height="61"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2k-nR-vf4" customClass="StrokeView" customModule="PaceMaker" customModuleProvider="target">
-                        <rect key="frame" x="85" y="65.5" width="16" height="3"/>
+                        <rect key="frame" x="21" y="45.5" width="16" height="3"/>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.87450980392156863" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="3MC-iq-h7w"/>
@@ -30,21 +30,21 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUQ-VX-GLV" customClass="StrokeView" customModule="PaceMaker" customModuleProvider="target">
-                        <rect key="frame" x="74" y="31" width="38" height="38"/>
+                        <rect key="frame" x="14" y="15.5" width="30" height="30"/>
                         <color key="backgroundColor" red="0.0" green="0.34509803921568627" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="38" id="Ql2-aZ-VKr"/>
-                            <constraint firstAttribute="width" constant="38" id="zPk-Va-WbX"/>
+                            <constraint firstAttribute="height" constant="30" id="PhP-gZ-Iea"/>
+                            <constraint firstAttribute="width" constant="30" id="nHn-UG-Qvs"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <integer key="value" value="19"/>
+                                <integer key="value" value="15"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBl-JK-jKz">
-                        <rect key="frame" x="72" y="39.5" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBl-JK-jKz">
+                        <rect key="frame" x="19.5" y="21" width="19.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -52,20 +52,20 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="tUQ-VX-GLV" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="8oK-iW-T8D"/>
+                <constraint firstItem="tUQ-VX-GLV" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Brt-Rh-dyt"/>
                 <constraint firstItem="VBl-JK-jKz" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Cpg-x8-RNY"/>
-                <constraint firstItem="tUQ-VX-GLV" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Vz0-JI-Trm"/>
+                <constraint firstItem="tUQ-VX-GLV" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="OQE-XC-eUf"/>
                 <constraint firstItem="VBl-JK-jKz" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="hrd-FN-Lv7"/>
                 <constraint firstItem="d2k-nR-vf4" firstAttribute="top" secondItem="VBl-JK-jKz" secondAttribute="bottom" constant="5" id="oNy-sf-sVI"/>
                 <constraint firstItem="d2k-nR-vf4" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="xOd-zI-IKN"/>
             </constraints>
-            <size key="customSize" width="186" height="100"/>
+            <size key="customSize" width="58" height="61"/>
             <connections>
                 <outlet property="dayLabel" destination="VBl-JK-jKz" id="LyJ-yM-Mg8"/>
                 <outlet property="hilightView" destination="d2k-nR-vf4" id="q2d-L4-a7K"/>
                 <outlet property="selectedView" destination="tUQ-VX-GLV" id="WHg-oQ-V2i"/>
             </connections>
-            <point key="canvasLocation" x="155.07246376811597" y="131.25"/>
+            <point key="canvasLocation" x="62.318840579710148" y="118.19196428571428"/>
         </collectionViewCell>
     </objects>
 </document>

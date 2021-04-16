@@ -15,6 +15,21 @@ final class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
+        PaceDataManager.shared.rxQuery().debug("PaceDataManager rxQuery")
+            .subscribe(onNext: { paces in
+                paces.forEach { pace in
+                    print("-------")
+                    print(pace.id)
+                    print("\(pace.distance)")
+                    print(String(pace.duration))
+                    print(String(pace.walking))
+                    print(String(pace.pace ?? ""))
+                    print("\(pace.runDate?.toUTCString())")
+                    print("\(pace.runDate?.string(WithFormat: .MM))")
+                    print("\(pace.runDate?.string(WithFormat: .paceDate))")
+                }
+            }).disposed(by: self.disposeBag)
+        
         self.setupUI()
     }
 

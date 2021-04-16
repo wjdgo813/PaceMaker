@@ -15,6 +15,8 @@ final class CalendarViewController: UIViewController {
     @IBOutlet private weak var monthLabel: UILabel!
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var previousButton: UIButton!
+    private let reloadMonth = PublishRelay<String>()
+    private var currentMonthPace = [Pace]()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -47,6 +49,14 @@ extension CalendarViewController {
                                                     self.setupViewsOfCalendar(from:self.calendarView.visibleDates())
                 })
             }).disposed(by: self.disposeBag)
+        
+        self.reloadMonth.flatMapLatest {
+            PaceDataManager.shared.rxQuery(yearMonth: $0)
+        }.subscribe(onNext: { [weak self] pace in
+            guard let self = self else { return }
+            self.currentMonthPace = pace
+            self.calendarView.reloadData()
+        }).disposed(by: self.disposeBag)
     }
 }
 
@@ -73,11 +83,17 @@ extension CalendarViewController {
         let year = Calendar.current.component(.year, from: startDate)
         
         monthLabel.text = monthName + " " + String(year)
+        self.reloadMonth.accept("\(monthName) \(year)")
     }
     
-    private func configureCell(view: JTACDayCell?, cellState: CellState) {
+    private func configureCell(view: JTACDayCell?, cellState: CellState, date: Date) {
         guard let cell = view as? CalendarCell  else { return }
-        cell.compose(date: cellState.text, havePace: true)
+        var pace: Pace?
+        if let data = self.currentMonthPace.first(where: { ($0.runDate?.string(WithFormat: .dd) == date.string(WithFormat: .dd)) && ($0.runDate?.string(WithFormat: .MM) == date.string(WithFormat: .MM)) }) {
+            pace = data
+        }
+        
+        cell.compose(date: cellState.text, pace: pace)
         self.handleCellTextColor(cell: cell, cellState: cellState)
         self.handleCellSelected(cell: cell, cellState: cellState)
     }
@@ -122,7 +138,7 @@ extension CalendarViewController: JTACMonthViewDelegate {
     }
     
     func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        configureCell(view: cell, cellState: cellState)
+        configureCell(view: cell, cellState: cellState, date: date)
     }
     
     func calendar(_ calendar: JTACMonthView, shouldSelectDate date: Date, cell: JTACDayCell?, cellState: CellState) -> Bool {
@@ -130,10 +146,10 @@ extension CalendarViewController: JTACMonthViewDelegate {
     }
     
     func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
-        self.configureCell(view: cell, cellState: cellState)
+        self.configureCell(view: cell, cellState: cellState, date: date)
     }
     
     func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
-        self.configureCell(view: cell, cellState: cellState)
+        self.configureCell(view: cell, cellState: cellState, date: date)
     }
 }

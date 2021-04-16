@@ -20,9 +20,9 @@ class CalendarCell: JTACDayCell {
 }
 
 extension CalendarCell {
-    func compose(date: String, havePace: Bool) {
+    func compose(date: String, pace: Pace?) {
         self.dayLabel.text = date
-        self.hilightView.isHidden = !havePace
+        self.hilightView.isHidden = pace.isEmpty
     }
     
     func changedColor(color: UIColor) {
@@ -31,8 +31,8 @@ extension CalendarCell {
     
     func selected(_ isAble: Bool) {
         self.selectedView.isHidden = !isAble
-        self.hilightView.isHidden = isAble
         if isAble {
+            self.hilightView.isHidden = isAble
             self.dayLabel.textColor = .white
         }
     }

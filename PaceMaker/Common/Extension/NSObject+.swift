@@ -40,3 +40,8 @@ extension Int {
      }
 }
 
+extension String {
+    public func format(parameters: CVarArg...) -> String {
+        return String(format: self, arguments: parameters)
+    }
+}

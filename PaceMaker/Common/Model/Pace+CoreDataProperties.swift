@@ -20,5 +20,6 @@ extension Pace {
     @NSManaged public var walking: Int64
     @NSManaged public var pace: String?
     @NSManaged public var id: String
+    @NSManaged public var yearMonth: String
     
 }

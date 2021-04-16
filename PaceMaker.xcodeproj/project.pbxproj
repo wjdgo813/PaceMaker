@@ -21,6 +21,8 @@
 		6F0D00DC2611E58800BE5E50 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D00DB2611E58800BE5E50 /* Record.swift */; };
 		6F0D00E12611E79600BE5E50 /* VCFactorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D00E02611E79600BE5E50 /* VCFactorable.swift */; };
 		6F206D37260A0A5F00641B99 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F206D36260A0A5F00641B99 /* Alertable.swift */; };
+		6F2BA50D2629B35C00EA2D67 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2BA50C2629B35C00EA2D67 /* Date+.swift */; };
+		6F2BA5122629C7DF00EA2D67 /* Optional+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2BA5112629C7DF00EA2D67 /* Optional+.swift */; };
 		6F32C241260A0D8700027863 /* PaceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F32C240260A0D8700027863 /* PaceScene.swift */; };
 		6F32C246260A0E0900027863 /* StoryBoard+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F32C245260A0E0900027863 /* StoryBoard+.swift */; };
 		6F32C24B260A0EAC00027863 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F32C24A260A0EAC00027863 /* NSObject+.swift */; };
@@ -83,6 +85,8 @@
 		6F0D00DB2611E58800BE5E50 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		6F0D00E02611E79600BE5E50 /* VCFactorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCFactorable.swift; sourceTree = "<group>"; };
 		6F206D36260A0A5F00641B99 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		6F2BA50C2629B35C00EA2D67 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		6F2BA5112629C7DF00EA2D67 /* Optional+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+.swift"; sourceTree = "<group>"; };
 		6F32C240260A0D8700027863 /* PaceScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceScene.swift; sourceTree = "<group>"; };
 		6F32C245260A0E0900027863 /* StoryBoard+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoryBoard+.swift"; sourceTree = "<group>"; };
 		6F32C24A260A0EAC00027863 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 				6F32C245260A0E0900027863 /* StoryBoard+.swift */,
 				6F32C24A260A0EAC00027863 /* NSObject+.swift */,
 				6F32C292260A22A300027863 /* PaceDataManager+Rx.swift */,
+				6F2BA50C2629B35C00EA2D67 /* Date+.swift */,
+				6F2BA5112629C7DF00EA2D67 /* Optional+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -556,6 +562,7 @@
 				6F32C26A260A14B400027863 /* Pace.xcdatamodeld in Sources */,
 				6F96DA9A26020C5B008E8D89 /* RxCLLocationDelegateProxy.swift in Sources */,
 				6F6C3B9A261DE657004AC28D /* StrokeView.swift in Sources */,
+				6F2BA50D2629B35C00EA2D67 /* Date+.swift in Sources */,
 				6F32C28E260A174300027863 /* PaceDataManager.swift in Sources */,
 				6F32C289260A167600027863 /* Pace+CoreDataProperties.swift in Sources */,
 				6F0AEF1925F62E78009DA436 /* HomeViewController.swift in Sources */,
@@ -573,6 +580,7 @@
 				6FD4A87725F6348100838BAE /* PaceViewController.swift in Sources */,
 				6F32C241260A0D8700027863 /* PaceScene.swift in Sources */,
 				6F32C288260A167600027863 /* Pace+CoreDataClass.swift in Sources */,
+				6F2BA5122629C7DF00EA2D67 /* Optional+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

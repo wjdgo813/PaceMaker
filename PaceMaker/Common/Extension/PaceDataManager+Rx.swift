@@ -25,9 +25,9 @@ extension PaceDataManager {
         }
     }
     
-    func rxQuery(runDate: Date) -> Observable<[Pace]> {
+    func rxQuery(yearMonth: String) -> Observable<[Pace]> {
         return Observable.create { observer in
-            let paces = PaceDataManager.shared.query(runDate: runDate)
+            let paces = PaceDataManager.shared.query(yearMonth: yearMonth)
             observer.onNext(paces)
             observer.onCompleted()
             
@@ -35,7 +35,7 @@ extension PaceDataManager {
         }
     }
     
-    func rxQuery()  -> Observable<[Pace]> {
+    func rxQuery() -> Observable<[Pace]> {
         return Observable.create { observer in
             let paces = PaceDataManager.shared.query()
             observer.onNext(paces)
