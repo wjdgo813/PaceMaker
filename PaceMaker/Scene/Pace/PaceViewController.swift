@@ -54,13 +54,13 @@ extension PaceViewController {
             .subscribe().disposed(by: self.disposeBag)
         
         output.runningTimer
-            .observe(on: MainScheduler.instance)
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] timer in
                 self?.durationLabel.text = timer
             }).disposed(by: self.disposeBag)
         
         output.walkingTimer
-            .observe(on: MainScheduler.instance)
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] timer in
                 self?.walkingTimeLabel.text = timer
             }).disposed(by: self.disposeBag)
@@ -75,14 +75,14 @@ extension PaceViewController {
             }).disposed(by: self.disposeBag)
         
         output.doNotWalking
-            .observe(on: MainScheduler.instance)
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 self?.impactGenerator.impactOccurred()
                 self?.toWalkingView()
         }).disposed(by: self.disposeBag)
         
         output.isCurrentRunning
-            .observe(on: MainScheduler.instance)
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 self?.toRunningView()
             }).disposed(by: self.disposeBag)

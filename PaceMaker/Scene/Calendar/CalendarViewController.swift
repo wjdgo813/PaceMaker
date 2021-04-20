@@ -9,20 +9,32 @@ import UIKit
 import JTAppleCalendar
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 final class CalendarViewController: UIViewController {
+    
+    @IBOutlet public weak var tableView: UITableView! {
+        didSet {
+            self.tableView.separatorStyle = .none
+            self.tableView.rowHeight = UITableView.automaticDimension
+        }
+    }
     @IBOutlet private weak var calendarView: JTACMonthView!
     @IBOutlet private weak var monthLabel: UILabel!
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var previousButton: UIButton!
+    
+    public let disposeBag = DisposeBag()
+    public let selectedDay = PublishRelay<[Pace]>()
     private let reloadMonth = PublishRelay<String>()
     private var currentMonthPace = [Pace]()
-    private let disposeBag = DisposeBag()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
         self.setBind()
+        self.setTableView()
     }
 }
 
@@ -32,6 +44,15 @@ extension CalendarViewController {
     }
     
     private func setBind() {
+        
+        Observable.just(())
+            .delay(.milliseconds(1000), scheduler: MainScheduler.instance)
+            .map { [weak self] in
+                self?.currentMonthPace.filter { ($0.runDate?.string(WithFormat: .dd) == Date().string(WithFormat: .dd)) && ($0.runDate?.string(WithFormat: .MM) == Date().string(WithFormat: .MM)) }
+            }.unwrap()
+            .bind(to: selectedDay)
+            .disposed(by: self.disposeBag)
+        
         self.nextButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -147,6 +168,8 @@ extension CalendarViewController: JTACMonthViewDelegate {
     
     func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         self.configureCell(view: cell, cellState: cellState, date: date)
+        let datas = self.currentMonthPace.filter { ($0.runDate?.string(WithFormat: .dd) == date.string(WithFormat: .dd)) && ($0.runDate?.string(WithFormat: .MM) == date.string(WithFormat: .MM)) }
+        self.selectedDay.accept(datas)
     }
     
     func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {

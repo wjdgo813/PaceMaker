@@ -8,6 +8,7 @@ target 'PaceMaker' do
   # Pods for PaceMaker
 pod 'RxSwift'
 pod 'RxCocoa'
+pod 'RxDataSources', '~> 4.0'
 pod 'JTAppleCalendar'
 
 

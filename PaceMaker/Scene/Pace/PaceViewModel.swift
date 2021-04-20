@@ -115,7 +115,7 @@ class PaceViewModel {
             .flatMapLatest { isPlaying in
                 isPlaying ? Observable<Int>
                     .interval(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)).map { _ in true } : .empty()
-            }.observe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            }.observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .debug("runningTimer").map { [weak self] countable -> Int in
                 guard let self = self else { return 0 }
                 self.timeCount += 1

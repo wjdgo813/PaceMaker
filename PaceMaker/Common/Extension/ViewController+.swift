@@ -24,27 +24,27 @@ extension UIViewController {
 
 extension UIViewController.DriverUtility {
     public func signalViewWillAppear() -> Observable<Void> {
-        return base.rx.methodInvoked(#selector(UIViewController.viewWillAppear(_:))).take(until: base.rx.deallocated).map { _ in }
+        return base.rx.methodInvoked(#selector(UIViewController.viewWillAppear(_:))).takeUntil(base.rx.deallocated).map { _ in }
     }
     
     public func signalViewDidAppear() -> Observable<Void> {
-        return base.rx.methodInvoked(#selector(UIViewController.viewDidAppear(_:))).take(until: base.rx.deallocated).map { _ in }
+        return base.rx.methodInvoked(#selector(UIViewController.viewDidAppear(_:))).takeUntil(base.rx.deallocated).map { _ in }
     }
     
     public func signalViewWillDisappear() -> Observable<Void> {
-        return base.rx.methodInvoked(#selector(UIViewController.viewWillDisappear(_:))).take(until: base.rx.deallocated).map { _ in }
+        return base.rx.methodInvoked(#selector(UIViewController.viewWillDisappear(_:))).takeUntil( base.rx.deallocated).map { _ in }
     }
     
     public func signalViewDidDisappear() -> Observable<Void> {
-        return base.rx.methodInvoked(#selector(UIViewController.viewDidDisappear(_:))).take(until: base.rx.deallocated).map { _ in }
+        return base.rx.methodInvoked(#selector(UIViewController.viewDidDisappear(_:))).takeUntil(base.rx.deallocated).map { _ in }
     }
     
     public func signalViewWillLayoutSubviews() -> Observable<Void> {
-        return base.rx.methodInvoked(#selector(UIViewController.viewWillLayoutSubviews)).take(until: base.rx.deallocated).map { _ in }
+        return base.rx.methodInvoked(#selector(UIViewController.viewWillLayoutSubviews)).takeUntil(base.rx.deallocated).map { _ in }
     }
     
     public func signalViewDidLayoutSubviews() -> Observable<Void> {
-        return base.rx.methodInvoked(#selector(UIViewController.viewDidLayoutSubviews)).take(until: base.rx.deallocated).map { _ in }
+        return base.rx.methodInvoked(#selector(UIViewController.viewDidLayoutSubviews)).takeUntil( base.rx.deallocated).map { _ in }
     }
     
     public func setStatusBarColorBlack(black: Bool) {
