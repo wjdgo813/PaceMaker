@@ -74,7 +74,7 @@ class PaceViewModel {
             .map { (newLocation, oldLocations) -> Double in
                 guard let last = oldLocations.last else { return 0.0 }
                 return last.distance(from: newLocation)
-            }
+            }.withLatestFrom(self.activityState) { ($0,$1) }.filter { $1  != .stationary }.map { $0.0 }
         
         //pace 공식: 전체 시간(seconds) / 전체 거리(km)
         let pace = updateLocation
