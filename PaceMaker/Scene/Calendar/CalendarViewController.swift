@@ -13,7 +13,7 @@ import RxDataSources
 
 final class CalendarViewController: UIViewController {
     
-    @IBOutlet public weak var tableView: UITableView! {
+    @IBOutlet private weak var tableView: UITableView! {
         didSet {
             self.tableView.separatorStyle = .none
             self.tableView.rowHeight = UITableView.automaticDimension
@@ -24,23 +24,22 @@ final class CalendarViewController: UIViewController {
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var previousButton: UIButton!
     
-    public let disposeBag = DisposeBag()
-    public let selectedDay = PublishRelay<[Pace]>()
+    private let selectedDay = PublishRelay<[Pace]>()
     private let reloadMonth = PublishRelay<String>()
     private var currentMonthPace = [Pace]()
-    
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
         self.setBind()
-        self.setTableView()
     }
 }
 
 extension CalendarViewController {
     private func setupUI() {
         self.setCalendarView()
+        self.setTableView()
     }
     
     private func setBind() {
@@ -78,6 +77,15 @@ extension CalendarViewController {
             self.currentMonthPace = pace
             self.calendarView.reloadData()
         }).disposed(by: self.disposeBag)
+    }
+    
+    func setTableView() {
+        self.tableView.register(PaceCell.self)
+        
+        self.selectedDay.map { [PaceSection(items: $0)] }
+            .bind(to: self.tableView.rx.items(dataSource: RxTableViewSectionedAnimatedDataSource<PaceSection>(configureCell: { dataSource, tableview, indexPath, data in
+                return tableview.getCell(value: PaceCell.self, data: data)
+            }))).disposed(by: self.disposeBag)
     }
 }
 
