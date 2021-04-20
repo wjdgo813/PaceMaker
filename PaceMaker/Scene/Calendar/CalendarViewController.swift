@@ -24,7 +24,8 @@ final class CalendarViewController: UIViewController {
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var previousButton: UIButton!
     
-    private let selectedDay = PublishRelay<[Pace]>()
+    private let selectedDay = BehaviorRelay<Date>(value: Date())
+    private let selectedPace = BehaviorRelay<[Pace]?>(value: nil)
     private let reloadMonth = PublishRelay<String>()
     private var currentMonthPace = [Pace]()
     private let disposeBag = DisposeBag()
@@ -44,12 +45,12 @@ extension CalendarViewController {
     
     private func setBind() {
         
-        Observable.just(())
-            .delay(.milliseconds(1000), scheduler: MainScheduler.instance)
-            .map { [weak self] in
-                self?.currentMonthPace.filter { ($0.runDate?.string(WithFormat: .dd) == Date().string(WithFormat: .dd)) && ($0.runDate?.string(WithFormat: .MM) == Date().string(WithFormat: .MM)) }
+        self.selectedDay
+            .delay(.milliseconds(900), scheduler: MainScheduler.instance)
+            .map { [weak self] selected in
+                self?.currentMonthPace.filter { ($0.runDate.string(WithFormat: .dd) == selected.string(WithFormat: .dd)) && ($0.runDate.string(WithFormat: .MM) == selected.string(WithFormat: .MM)) }
             }.unwrap()
-            .bind(to: selectedDay)
+            .bind(to: self.selectedPace)
             .disposed(by: self.disposeBag)
         
         self.nextButton.rx.tap
@@ -70,21 +71,42 @@ extension CalendarViewController {
                 })
             }).disposed(by: self.disposeBag)
         
-        self.reloadMonth.flatMapLatest {
-            PaceDataManager.shared.rxQuery(yearMonth: $0)
-        }.subscribe(onNext: { [weak self] pace in
-            guard let self = self else { return }
-            self.currentMonthPace = pace
-            self.calendarView.reloadData()
-        }).disposed(by: self.disposeBag)
+        self.reloadMonth
+            .flatMapLatest { PaceDataManager.shared.rxQuery(yearMonth: $0) }
+            .subscribe(onNext: { [weak self] paces in
+                guard let self = self else { return }
+                self.currentMonthPace = paces
+                self.selectedDay.accept(self.selectedDay.value)
+//                let datas = paces.filter { ($0.runDate.string(WithFormat: .dd) == selected.string(WithFormat: .dd)) && ($0.runDate.string(WithFormat: .MM) == selected.string(WithFormat: .MM)) }
+//                self.selectedPace.accept(datas)
+                
+                
+                self.calendarView.reloadData()
+            }).disposed(by: self.disposeBag)
     }
     
     func setTableView() {
         self.tableView.register(PaceCell.self)
         
-        self.selectedDay.map { [PaceSection(items: $0)] }
-            .bind(to: self.tableView.rx.items(dataSource: RxTableViewSectionedAnimatedDataSource<PaceSection>(configureCell: { dataSource, tableview, indexPath, data in
-                return tableview.getCell(value: PaceCell.self, data: data)
+        self.selectedPace.unwrap().map { [PaceSection(items: $0)] }
+            .bind(to: self.tableView.rx.items(dataSource: RxTableViewSectionedAnimatedDataSource<PaceSection>(configureCell: { [weak self] dataSource, tableview, indexPath, data in
+                
+                let cell = tableview.getCell(value: PaceCell.self, data: data)
+                cell.deleteButton.rx.tap
+                    .flatMap { [weak self] _ -> Observable<Bool> in
+                        guard let self = self else { return .just(false) }
+                        return self.showRemovePace()
+                    }
+                    .filter { $0 }
+                    .flatMap { _ -> Observable<Void> in
+                        return PaceDataManager.shared.rxDeletePace(id: data.id)
+                    }
+                    .subscribe(onNext: { [weak self] in
+                        guard let self = self else { return }
+                        self.setupViewsOfCalendar(from:self.calendarView.visibleDates())
+                    }).disposed(by: cell.reusableBag)
+                
+                return cell
             }))).disposed(by: self.disposeBag)
     }
 }
@@ -118,7 +140,7 @@ extension CalendarViewController {
     private func configureCell(view: JTACDayCell?, cellState: CellState, date: Date) {
         guard let cell = view as? CalendarCell  else { return }
         var pace: Pace?
-        if let data = self.currentMonthPace.first(where: { ($0.runDate?.string(WithFormat: .dd) == date.string(WithFormat: .dd)) && ($0.runDate?.string(WithFormat: .MM) == date.string(WithFormat: .MM)) }) {
+        if let data = self.currentMonthPace.first(where: { ($0.runDate.string(WithFormat: .dd) == date.string(WithFormat: .dd)) && ($0.runDate.string(WithFormat: .MM) == date.string(WithFormat: .MM)) }) {
             pace = data
         }
         
@@ -176,11 +198,29 @@ extension CalendarViewController: JTACMonthViewDelegate {
     
     func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         self.configureCell(view: cell, cellState: cellState, date: date)
-        let datas = self.currentMonthPace.filter { ($0.runDate?.string(WithFormat: .dd) == date.string(WithFormat: .dd)) && ($0.runDate?.string(WithFormat: .MM) == date.string(WithFormat: .MM)) }
-        self.selectedDay.accept(datas)
+        self.selectedDay.accept(date)
     }
     
     func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         self.configureCell(view: cell, cellState: cellState, date: date)
+    }
+}
+
+extension CalendarViewController: Alertable {
+    private func showRemovePace() -> Observable<Bool> {
+        return Observable.create { observer in
+            let yes = UIAlertAction(title: "Yes", style: .default) { _ in
+                observer.onNext(true)
+                observer.onCompleted()
+            }
+            
+            let no = UIAlertAction(title: "No", style: .default) { (action) in
+                observer.onNext(false)
+                observer.onCompleted()
+            }
+
+            self.showAlert(title: "", message: "Should I delete the record?", actions: no, yes)
+            return Disposables.create()
+        }
     }
 }

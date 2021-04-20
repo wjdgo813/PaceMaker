@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import CoreLocation
 
-enum ActivityState: String {
+enum ActivityState: String, Equatable {
     case stationary
     case walking
     case running
@@ -51,7 +51,8 @@ extension PaceViewController {
                                                                          runningTimer: startRunning.asObservable()))
         
         output.activity
-            .subscribe().disposed(by: self.disposeBag)
+            .subscribe()
+            .disposed(by: self.disposeBag)
         
         output.runningTimer
             .observeOn(MainScheduler.instance)
@@ -87,15 +88,32 @@ extension PaceViewController {
                 self?.toRunningView()
             }).disposed(by: self.disposeBag)
         
+        output.doNotWalking
+            .observeOn(MainScheduler.instance)
+            .debug("doNotWalking")
+            .withLatestFrom(output.activity)
+            .debug("doNotWalking output.activity")
+            .distinctUntilChanged()
+            .filter { $0 != .running }
+            .debug("doNotWalking distinctUntilChanged")
+            .subscribe(onNext: { [weak self] _ in
+                self?.runningNotification()
+            }).disposed(by: self.disposeBag)
+        
         self.pauseButton.rx.tap
             .flatMap { [weak self] _ -> Observable<Bool> in
                 return self?.showStopAlert() ?? .empty()
             }
+            .do(onNext: { [weak self] finished in
+                if finished == false {
+                    self?.startRunning.accept(true)
+                }
+            })
             .filter { $0 }
-            .withLatestFrom(Observable.combineLatest(output.distance.debug("combine distance"),
-                                                     output.runningTimer.debug("combine runningTimer"),
-                                                     output.walkingTimer.debug("combine walkingTimer"),
-                                                     output.pace.startWith("0:00").debug("combine pace")) { ($0, $1, $2, $3) })
+            .withLatestFrom(Observable.combineLatest(output.distance,
+                                                     output.runningTimer,
+                                                     output.walkingTimer,
+                                                     output.pace.startWith("0:00")) { ($0, $1, $2, $3) })
             .map { distance, duration, walking, pace in
                 return Record(date: Date(),
                               distance: Double(distance) ?? 0.0,
@@ -169,8 +187,16 @@ extension PaceViewController {
                 observer.onCompleted()
             }
 
-            self.showAlert(title: "잠시 정지하고 있어요", message: "달리기를 종료할까요?", actions: keep,finish)
+            self.showAlert(title: "", message: "Do you want to finish running?", actions: keep,finish)
             return Disposables.create()
+        }
+    }
+    
+    private func runningNotification() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        appDelegate.unNotification.enableUserNotification { (granted) in
+            guard granted == true else { return }
+            appDelegate.unNotification.sendNotification(seconds: 1)
         }
     }
 }

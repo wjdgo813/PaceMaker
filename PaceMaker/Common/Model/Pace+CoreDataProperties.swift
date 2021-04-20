@@ -14,7 +14,7 @@ extension Pace {
         return NSFetchRequest<Pace>(entityName: "Pace")
     }
 
-    @NSManaged public var runDate: Date?
+    @NSManaged public var runDate: Date
     @NSManaged public var distance: Double
     @NSManaged public var duration: Int64
     @NSManaged public var walking: Int64

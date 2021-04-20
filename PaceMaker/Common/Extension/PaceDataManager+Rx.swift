@@ -45,7 +45,7 @@ extension PaceDataManager {
         }
     }
     
-    func rxDeletePace(id: Int64) -> Observable<Void> {
+    func rxDeletePace(id: String) -> Observable<Void> {
         return Observable.create { observer in
             PaceDataManager.shared.deletePace(id: id) { (finished) in
                 observer.onNext(())

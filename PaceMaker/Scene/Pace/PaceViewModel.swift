@@ -116,11 +116,12 @@ class PaceViewModel {
                 isPlaying ? Observable<Int>
                     .interval(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)).map { _ in true } : .empty()
             }.observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .debug("runningTimer").map { [weak self] countable -> Int in
+            .map { [weak self] countable -> Int in
                 guard let self = self else { return 0 }
                 self.timeCount += 1
                 return self.timeCount
             }
+            .debug("runningTimer").share()
         
         let walkingTimer = input.runningTimer
             .flatMap { isPlaying in self.isRunning.map { (isPlaying,$0) } }
@@ -131,15 +132,16 @@ class PaceViewModel {
                 guard let self = self else { return 0 }
                 self.walkingTime += 1
                 return self.walkingTime
-            }
+            }.share().debug("walkingTimer")
         
         let differWalkingTime = self.isRunning
             .distinctUntilChanged()
-            .flatMapLatest { isWalking in
-                isWalking == false ? Observable<Int>
+            .flatMap { isRunning in input.runningTimer.map { (isRunning,$0) } }
+            .flatMapLatest { (isWalking, isPlaying) in
+                (isPlaying == true && isWalking == false) ? Observable<Int>
                     .interval(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)) : .empty()
-            }.debug("jhh walkingCount")
-            .withLatestFrom(input.tracking) {($0,$1)}
+            }.debug("differ walkingTime")
+            .withLatestFrom(input.tracking) {($0,$1)}.share()
             
         let doNotWalking = differWalkingTime.filter { currentWalkingTime, limitedWalkingTime in
             currentWalkingTime > (limitedWalkingTime * 60)

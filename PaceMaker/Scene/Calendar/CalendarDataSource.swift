@@ -9,7 +9,7 @@ import RxDataSources
 
 extension Pace: IdentifiableType {
     public var identity: String {
-        return "Pace"
+        return self.id
     }
 }
 

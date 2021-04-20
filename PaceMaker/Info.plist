@@ -18,6 +18,26 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Oswald-VariableFont_wght</string>
+		<string>Oswald-Bold</string>
+		<string>Oswald-ExtraLight</string>
+		<string>Oswald-Light</string>
+		<string>Oswald-Medium</string>
+		<string>Oswald-Regular</string>
+		<string>Oswald-SemiBold</string>
+		<string>OpenSans-Bold</string>
+		<string>OpenSans-BoldItalic</string>
+		<string>OpenSans-ExtraBold</string>
+		<string>OpenSans-ExtraBoldItalic</string>
+		<string>OpenSans-Italic</string>
+		<string>OpenSans-Light</string>
+		<string>OpenSans-LightItalic</string>
+		<string>OpenSans-Regular</string>
+		<string>OpenSans-SemiBold</string>
+		<string>OpenSans-SemiBoldItalic</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>

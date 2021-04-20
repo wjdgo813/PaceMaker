@@ -42,6 +42,25 @@
 		6FA487A4262F034400340B66 /* TableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA487A3262F034400340B66 /* TableView+.swift */; };
 		6FA487AE262F03ED00340B66 /* PaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA487AC262F03ED00340B66 /* PaceCell.swift */; };
 		6FA487AF262F03ED00340B66 /* PaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487AD262F03ED00340B66 /* PaceCell.xib */; };
+		6FA487B7262F1B0C00340B66 /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA487B6262F1B0C00340B66 /* UserNotification.swift */; };
+		6FA487BC262F23DA00340B66 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA487BB262F23DA00340B66 /* UIColor+.swift */; };
+		6FA487C4262F374100340B66 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487C3262F374100340B66 /* Oswald-VariableFont_wght.ttf */; };
+		6FA487CE262F375B00340B66 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487C8262F375A00340B66 /* Oswald-Light.ttf */; };
+		6FA487CF262F375B00340B66 /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487C9262F375B00340B66 /* Oswald-Medium.ttf */; };
+		6FA487D0262F375B00340B66 /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487CA262F375B00340B66 /* Oswald-Regular.ttf */; };
+		6FA487D1262F375B00340B66 /* Oswald-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487CB262F375B00340B66 /* Oswald-SemiBold.ttf */; };
+		6FA487D2262F375B00340B66 /* Oswald-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487CC262F375B00340B66 /* Oswald-Bold.ttf */; };
+		6FA487D3262F375B00340B66 /* Oswald-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487CD262F375B00340B66 /* Oswald-ExtraLight.ttf */; };
+		6FA487E5262F398900340B66 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487DB262F398800340B66 /* OpenSans-BoldItalic.ttf */; };
+		6FA487E6262F398900340B66 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487DC262F398800340B66 /* OpenSans-ExtraBoldItalic.ttf */; };
+		6FA487E7262F398900340B66 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487DD262F398800340B66 /* OpenSans-ExtraBold.ttf */; };
+		6FA487E8262F398900340B66 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487DE262F398800340B66 /* OpenSans-Regular.ttf */; };
+		6FA487E9262F398900340B66 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487DF262F398800340B66 /* OpenSans-LightItalic.ttf */; };
+		6FA487EA262F398900340B66 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487E0262F398800340B66 /* OpenSans-Light.ttf */; };
+		6FA487EB262F398900340B66 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487E1262F398800340B66 /* OpenSans-Bold.ttf */; };
+		6FA487EC262F398900340B66 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487E2262F398900340B66 /* OpenSans-Italic.ttf */; };
+		6FA487ED262F398900340B66 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487E3262F398900340B66 /* OpenSans-SemiBoldItalic.ttf */; };
+		6FA487EE262F398900340B66 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487E4262F398900340B66 /* OpenSans-SemiBold.ttf */; };
 		6FD4A87725F6348100838BAE /* PaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4A87625F6348100838BAE /* PaceViewController.swift */; };
 		6FD4A87C25F7134E00838BAE /* PaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4A87B25F7134E00838BAE /* PaceViewModel.swift */; };
 		A89DA4A87A0F1CF1C75C54C4 /* Pods_PaceMakerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB675C25F47DA114121BDCF /* Pods_PaceMakerTests.framework */; };
@@ -110,6 +129,25 @@
 		6FA487A3262F034400340B66 /* TableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+.swift"; sourceTree = "<group>"; };
 		6FA487AC262F03ED00340B66 /* PaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCell.swift; sourceTree = "<group>"; };
 		6FA487AD262F03ED00340B66 /* PaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaceCell.xib; sourceTree = "<group>"; };
+		6FA487B6262F1B0C00340B66 /* UserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
+		6FA487BB262F23DA00340B66 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		6FA487C3262F374100340B66 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		6FA487C8262F375A00340B66 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
+		6FA487C9262F375B00340B66 /* Oswald-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Medium.ttf"; sourceTree = "<group>"; };
+		6FA487CA262F375B00340B66 /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Regular.ttf"; sourceTree = "<group>"; };
+		6FA487CB262F375B00340B66 /* Oswald-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-SemiBold.ttf"; sourceTree = "<group>"; };
+		6FA487CC262F375B00340B66 /* Oswald-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Bold.ttf"; sourceTree = "<group>"; };
+		6FA487CD262F375B00340B66 /* Oswald-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-ExtraLight.ttf"; sourceTree = "<group>"; };
+		6FA487DB262F398800340B66 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		6FA487DC262F398800340B66 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		6FA487DD262F398800340B66 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		6FA487DE262F398800340B66 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		6FA487DF262F398800340B66 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		6FA487E0262F398800340B66 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		6FA487E1262F398800340B66 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		6FA487E2262F398900340B66 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		6FA487E3262F398900340B66 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		6FA487E4262F398900340B66 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		6FD4A87625F6348100838BAE /* PaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceViewController.swift; sourceTree = "<group>"; };
 		6FD4A87B25F7134E00838BAE /* PaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceViewModel.swift; sourceTree = "<group>"; };
 		83DF7F47632BFD753009A0C4 /* Pods_PaceMaker_PaceMakerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceMaker_PaceMakerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +248,7 @@
 				6F0C0A7C25F78CF4008EDF20 /* Extension */,
 				6F32C240260A0D8700027863 /* PaceScene.swift */,
 				6F6C3B99261DE657004AC28D /* StrokeView.swift */,
+				6FA487B6262F1B0C00340B66 /* UserNotification.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -226,6 +265,7 @@
 				6F2BA50C2629B35C00EA2D67 /* Date+.swift */,
 				6F2BA5112629C7DF00EA2D67 /* Optional+.swift */,
 				6FA487A3262F034400340B66 /* TableView+.swift */,
+				6FA487BB262F23DA00340B66 /* UIColor+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -264,6 +304,7 @@
 				6F0AEF1A25F62E78009DA436 /* Main.storyboard */,
 				6F0AEF1D25F62E78009DA436 /* Assets.xcassets */,
 				6F0AEF1F25F62E78009DA436 /* LaunchScreen.storyboard */,
+				6FA487D7262F376400340B66 /* Font */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -298,6 +339,30 @@
 				6FA487AD262F03ED00340B66 /* PaceCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		6FA487D7262F376400340B66 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				6FA487C3262F374100340B66 /* Oswald-VariableFont_wght.ttf */,
+				6FA487CC262F375B00340B66 /* Oswald-Bold.ttf */,
+				6FA487CD262F375B00340B66 /* Oswald-ExtraLight.ttf */,
+				6FA487C8262F375A00340B66 /* Oswald-Light.ttf */,
+				6FA487C9262F375B00340B66 /* Oswald-Medium.ttf */,
+				6FA487CA262F375B00340B66 /* Oswald-Regular.ttf */,
+				6FA487CB262F375B00340B66 /* Oswald-SemiBold.ttf */,
+				6FA487E1262F398800340B66 /* OpenSans-Bold.ttf */,
+				6FA487DB262F398800340B66 /* OpenSans-BoldItalic.ttf */,
+				6FA487DD262F398800340B66 /* OpenSans-ExtraBold.ttf */,
+				6FA487DC262F398800340B66 /* OpenSans-ExtraBoldItalic.ttf */,
+				6FA487E2262F398900340B66 /* OpenSans-Italic.ttf */,
+				6FA487E0262F398800340B66 /* OpenSans-Light.ttf */,
+				6FA487DF262F398800340B66 /* OpenSans-LightItalic.ttf */,
+				6FA487DE262F398800340B66 /* OpenSans-Regular.ttf */,
+				6FA487E4262F398900340B66 /* OpenSans-SemiBold.ttf */,
+				6FA487E3262F398900340B66 /* OpenSans-SemiBoldItalic.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		6FD4A87525F6346600838BAE /* Scene */ = {
@@ -446,9 +511,26 @@
 				6F0AEF2125F62E78009DA436 /* LaunchScreen.storyboard in Resources */,
 				6F0AEF1E25F62E78009DA436 /* Assets.xcassets in Resources */,
 				6F0AEF1C25F62E78009DA436 /* Main.storyboard in Resources */,
+				6FA487EE262F398900340B66 /* OpenSans-SemiBold.ttf in Resources */,
+				6FA487EA262F398900340B66 /* OpenSans-Light.ttf in Resources */,
+				6FA487CE262F375B00340B66 /* Oswald-Light.ttf in Resources */,
+				6FA487D3262F375B00340B66 /* Oswald-ExtraLight.ttf in Resources */,
+				6FA487EC262F398900340B66 /* OpenSans-Italic.ttf in Resources */,
 				6F32C259260A102200027863 /* Result.storyboard in Resources */,
+				6FA487ED262F398900340B66 /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				6FA487D0262F375B00340B66 /* Oswald-Regular.ttf in Resources */,
+				6FA487E6262F398900340B66 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				6FA487E9262F398900340B66 /* OpenSans-LightItalic.ttf in Resources */,
 				6FA487AF262F03ED00340B66 /* PaceCell.xib in Resources */,
+				6FA487CF262F375B00340B66 /* Oswald-Medium.ttf in Resources */,
+				6FA487C4262F374100340B66 /* Oswald-VariableFont_wght.ttf in Resources */,
+				6FA487E7262F398900340B66 /* OpenSans-ExtraBold.ttf in Resources */,
+				6FA487E5262F398900340B66 /* OpenSans-BoldItalic.ttf in Resources */,
+				6FA487D1262F375B00340B66 /* Oswald-SemiBold.ttf in Resources */,
+				6FA487E8262F398900340B66 /* OpenSans-Regular.ttf in Resources */,
 				6F6C3B81261DE570004AC28D /* CalendarCell.xib in Resources */,
+				6FA487EB262F398900340B66 /* OpenSans-Bold.ttf in Resources */,
+				6FA487D2262F375B00340B66 /* Oswald-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +675,7 @@
 				6F206D37260A0A5F00641B99 /* Alertable.swift in Sources */,
 				6F0AEF1525F62E78009DA436 /* AppDelegate.swift in Sources */,
 				6F2BA5232629CD4500EA2D67 /* CalendarDataSource.swift in Sources */,
+				6FA487B7262F1B0C00340B66 /* UserNotification.swift in Sources */,
 				6F0D00DC2611E58800BE5E50 /* Record.swift in Sources */,
 				6F0AEF1725F62E78009DA436 /* SceneDelegate.swift in Sources */,
 				6F0C0A7825F78CF1008EDF20 /* Rx+.swift in Sources */,
@@ -601,6 +684,7 @@
 				6F32C251260A101900027863 /* ResultViewController.swift in Sources */,
 				6F0C0A7225F787E0008EDF20 /* ContainerViewController.swift in Sources */,
 				6F32C24B260A0EAC00027863 /* NSObject+.swift in Sources */,
+				6FA487BC262F23DA00340B66 /* UIColor+.swift in Sources */,
 				6FD4A87725F6348100838BAE /* PaceViewController.swift in Sources */,
 				6F32C241260A0D8700027863 /* PaceScene.swift in Sources */,
 				6F32C288260A167600027863 /* Pace+CoreDataClass.swift in Sources */,

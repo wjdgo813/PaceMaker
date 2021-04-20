@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var unNotification : UserNotification = UserNotification()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        self.unNotification.enableUserNotification { _ -> (Void) in
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications() //최초 푸시 사용 여부 표시용..
+            }
+        }
         return true
     }
 

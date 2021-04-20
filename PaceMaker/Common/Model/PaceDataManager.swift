@@ -34,7 +34,7 @@ class PaceDataManager {
         p.duration = duration
         p.walking = walking
         p.pace = pace
-        p.id = ""
+        p.id = Date().toUTCString()
         p.yearMonth = "\(runDate.string(WithFormat: .MMMM)) \(runDate.string(WithFormat: .yyyy))"
         contextSave { success in
             onSuccess(success)
@@ -44,10 +44,11 @@ class PaceDataManager {
     func query(yearMonth: String) -> [Pace] {
         var paces = [Pace]()
         let context = persistentContainer.viewContext
-        let request: NSFetchRequest<NSManagedObject> = NSFetchRequest<NSManagedObject>(entityName: "Pace")
         
+        let request: NSFetchRequest<NSManagedObject> = NSFetchRequest<NSManagedObject>(entityName: "Pace")
         let predicate = NSPredicate(format: "yearMonth == %@", yearMonth)
         request.predicate = predicate
+
         do {
             if let fetchResult: [Pace] = try context.fetch(request) as? [Pace] {
                 paces = fetchResult
@@ -75,8 +76,10 @@ class PaceDataManager {
         return paces
     }
     
-    func deletePace(id: Int64, onSuccess: @escaping ((Bool) -> Void)) {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = filteredRequest(id: id)
+    func deletePace(id: String, onSuccess: @escaping ((Bool) -> Void)) {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult>
+            = NSFetchRequest<NSFetchRequestResult>(entityName: "Pace")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         
         do {
             if let results: [Pace] = try self.persistentContainer.viewContext.fetch(fetchRequest) as? [Pace] {
@@ -96,12 +99,6 @@ class PaceDataManager {
 }
 
 extension PaceDataManager {
-    fileprivate func filteredRequest(id: Int64) -> NSFetchRequest<NSFetchRequestResult> {
-            let fetchRequest: NSFetchRequest<NSFetchRequestResult>
-                = NSFetchRequest<NSFetchRequestResult>(entityName: "Pace")
-            fetchRequest.predicate = NSPredicate(format: "id = %@", NSNumber(value: id))
-            return fetchRequest
-        }
     
     private func contextSave(onSuccess: ((Bool) -> Void)) {
         do {
