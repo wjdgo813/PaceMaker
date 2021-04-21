@@ -12,6 +12,7 @@ import RxCocoa
 
 final class ResultViewController: UIViewController {
 
+    @IBOutlet private weak var runDateLabel: UILabel!
     @IBOutlet private weak var confirmButton: UIButton!
     @IBOutlet private weak var distanceLabel: UILabel!
     @IBOutlet private weak var durationLabel: UILabel!
@@ -26,6 +27,7 @@ final class ResultViewController: UIViewController {
         self.durationLabel.text = "\(self.record.duration)"
         self.paceLabel.text     = "\(self.record.pace)"
         self.walkingLabel.text = "\(self.record.walking)"
+        self.runDateLabel.text = self.record.date.string(WithFormat: .paceDate)
         
         self.confirmButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
