@@ -26,6 +26,7 @@ class PaceViewModel {
         let runningTimer   : Observable<String>
         let walkingTimer   : Observable<String>
         let pace           : Observable<String>
+        let pacePerKm      : Observable<Double>
     }
     
     private lazy var locationManager: CLLocationManager = {
@@ -40,6 +41,7 @@ class PaceViewModel {
     private var timeCount   = 0
     private var walkingTime = 0
     private var limitedWalkingTime = 0
+    private var totalPace = [Double]()
     
     private let motionManager = CMMotionActivityManager()
     private let locations     = BehaviorRelay<[CLLocation]>(value: [])
@@ -53,6 +55,7 @@ class PaceViewModel {
     }
     
     func transform(input: Input) -> Output {
+        let pacePerKm = PublishRelay<Double>()
 
         let updateLocation = self.locationManager.rx
             .updateLocations
@@ -74,15 +77,20 @@ class PaceViewModel {
             .map { (newLocation, oldLocations) -> Double in
                 guard let last = oldLocations.last else { return 0.0 }
                 return last.distance(from: newLocation)
-            }.withLatestFrom(self.activityState) { ($0,$1) }.filter { $1  != .stationary }.map { $0.0 }
+            }.withLatestFrom(self.activityState) { ($0,$1) }.debug("jhh")
+//            .filter { $1  != .stationary }
+            .map { $0.0 }
         
         //pace 공식: 전체 시간(seconds) / 전체 거리(km)
         let pace = updateLocation
             .withLatestFrom(self.totalDistance) { ($0,$1) }
             .map { [weak self] (newLocation, totalDistance) -> String in
                 guard let self = self, self.timeCount > 0, totalDistance > 0.0 else { return "0:00" }
-                let pace = Int(Double(self.timeCount) / (totalDistance/1000)).toSeconds()
-                return pace
+                let pace = Double(self.timeCount) / (totalDistance/1000)
+                if (Double(totalDistance.toKiloMeter()) ?? 0.0).truncatingRemainder(dividingBy: 1.0) == 0 {
+                    pacePerKm.accept(pace)
+                }
+                return Int(pace).toSeconds()
             }
         
         distance
@@ -124,7 +132,10 @@ class PaceViewModel {
             .debug("runningTimer").share()
         
         let walkingTimer = input.runningTimer
-            .flatMap { isPlaying in self.isRunning.map { (isPlaying,$0) } }
+            .flatMap { [weak self] isPlaying -> Observable<(Bool,Bool)> in
+                guard let self = self else { return .empty() }
+                return self.isRunning.map { (isPlaying,$0) }
+            }
             .flatMapLatest { (isPlaying,isRunning) in
                 (isPlaying == true && isRunning == false) ? Observable<Int>
                     .interval(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)).map { _ in true } : .empty()
@@ -155,7 +166,8 @@ class PaceViewModel {
                       isCurrentRunning: isCurrentRunning,
                       runningTimer: runningTimer.map { $0.toMinutes() },
                       walkingTimer: walkingTimer.map { $0.toMinutes() },
-                      pace: pace.map { String($0) })
+                      pace: pace.map { String($0) },
+                      pacePerKm: pacePerKm.asObservable())
     }
 }
 
@@ -166,8 +178,8 @@ extension PaceViewModel {
     }
     
     private func startTrackingActivityType() -> Observable<ActivityState?> {
-        return Observable<ActivityState?>.create { (observer) -> Disposable in
-            guard CMMotionActivityManager.isActivityAvailable() else { return Disposables.create() }
+        return Observable<ActivityState?>.create { [weak self] (observer) -> Disposable in
+            guard CMMotionActivityManager.isActivityAvailable(), let self = self else { return Disposables.create() }
             self.motionManager.startActivityUpdates(to: OperationQueue.main) { (activity: CMMotionActivity?) in
                 guard let activity = activity else {
                     return

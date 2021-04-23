@@ -46,7 +46,6 @@ extension CalendarViewController {
     private func setBind() {
         
         self.selectedDay
-            .delay(.milliseconds(900), scheduler: MainScheduler.instance)
             .map { [weak self] selected in
                 self?.currentMonthPace.filter { ($0.runDate.string(WithFormat: .dd) == selected.string(WithFormat: .dd)) && ($0.runDate.string(WithFormat: .MM) == selected.string(WithFormat: .MM)) }
             }.unwrap()

@@ -28,6 +28,7 @@ final class PaceViewController: UIViewController, Alertable {
     @IBOutlet private weak var distanceLabel: UILabel!
     @IBOutlet private weak var walkingTItleImageView: UIImageView!
     
+    private var totalPacePerKm = [Double]()
     private let startRunning = BehaviorRelay<Bool>(value: true)
     private let impactGenerator = UIImpactFeedbackGenerator(style: .heavy)
     private let viewModel = PaceViewModel()
@@ -90,15 +91,16 @@ extension PaceViewController {
         
         output.doNotWalking
             .observeOn(MainScheduler.instance)
-            .debug("doNotWalking")
             .withLatestFrom(output.activity)
-            .debug("doNotWalking output.activity")
             .distinctUntilChanged()
             .filter { $0 != .running }
-            .debug("doNotWalking distinctUntilChanged")
             .subscribe(onNext: { [weak self] _ in
                 self?.runningNotification()
             }).disposed(by: self.disposeBag)
+        
+        output.pacePerKm.subscribe(onNext: { [weak self] pace in
+            self?.totalPacePerKm.append(pace)
+        }).disposed(by: self.disposeBag)
         
         self.pauseButton.rx.tap
             .flatMap { [weak self] _ -> Observable<Bool> in
@@ -112,14 +114,15 @@ extension PaceViewController {
             .filter { $0 }
             .withLatestFrom(Observable.combineLatest(output.distance,
                                                      output.runningTimer,
-                                                     output.walkingTimer,
-                                                     output.pace.startWith("0:00")) { ($0, $1, $2, $3) })
-            .map { distance, duration, walking, pace in
+                                                     output.walkingTimer) { ($0, $1, $2) })
+            .map { [weak self] distance, duration, walking in
+                let pace = self?.totalPacePerKm.reduce(0.0) { $0 + $1 / Double(self?.totalPacePerKm.count ?? 0)} ?? 0.0
                 return Record(date: Date(),
                               distance: Double(distance) ?? 0.0,
                               duration: Int(duration) ?? 0,
                               walking: Int(walking) ?? 0,
-                              pace: pace)
+                              pace: Int(pace).toSeconds())
+                
             }
             .flatMap { record in
                 return PaceDataManager.shared.rxSave(record: record)
@@ -195,7 +198,7 @@ extension PaceViewController {
     private func runningNotification() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.unNotification.enableUserNotification { (granted) in
-            guard granted == true else { return }
+            guard granted == true, UserDefaults.standard.bool(forKey: "notiOn") == true else { return }
             appDelegate.unNotification.sendNotification(seconds: 1)
         }
     }
