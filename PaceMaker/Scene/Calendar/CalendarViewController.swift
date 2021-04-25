@@ -76,9 +76,6 @@ extension CalendarViewController {
                 guard let self = self else { return }
                 self.currentMonthPace = paces
                 self.selectedDay.accept(self.selectedDay.value)
-//                let datas = paces.filter { ($0.runDate.string(WithFormat: .dd) == selected.string(WithFormat: .dd)) && ($0.runDate.string(WithFormat: .MM) == selected.string(WithFormat: .MM)) }
-//                self.selectedPace.accept(datas)
-                
                 
                 self.calendarView.reloadData()
             }).disposed(by: self.disposeBag)

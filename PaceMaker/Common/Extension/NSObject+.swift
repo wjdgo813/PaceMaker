@@ -19,8 +19,9 @@ extension NSObject {
 }
 
 extension Double {
-    func toKiloMeter() -> String {
-        return String(format: "%.1f", (self / 1000))
+
+    func toKiloMeter() -> Double {
+        return floor(((self/1000)*10))/10
     }
     
     func secondsToSeconds () -> String {

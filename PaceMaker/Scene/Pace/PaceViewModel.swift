@@ -26,7 +26,7 @@ class PaceViewModel {
         let runningTimer   : Observable<String>
         let walkingTimer   : Observable<String>
         let pace           : Observable<String>
-        let pacePerKm      : Observable<Double>
+        let pacePerKms      : Observable<[Double]>
     }
     
     private lazy var locationManager: CLLocationManager = {
@@ -55,7 +55,7 @@ class PaceViewModel {
     }
     
     func transform(input: Input) -> Output {
-        let pacePerKm = PublishRelay<Double>()
+        let totalPacePerKms = BehaviorRelay<[Double]>(value: [Double]())
 
         let updateLocation = self.locationManager.rx
             .updateLocations
@@ -78,7 +78,7 @@ class PaceViewModel {
                 guard let last = oldLocations.last else { return 0.0 }
                 return last.distance(from: newLocation)
             }.withLatestFrom(self.activityState) { ($0,$1) }.debug("jhh")
-//            .filter { $1  != .stationary }
+            .filter { $1  != .stationary }
             .map { $0.0 }
         
         //pace 공식: 전체 시간(seconds) / 전체 거리(km)
@@ -87,8 +87,14 @@ class PaceViewModel {
             .map { [weak self] (newLocation, totalDistance) -> String in
                 guard let self = self, self.timeCount > 0, totalDistance > 0.0 else { return "0:00" }
                 let pace = Double(self.timeCount) / (totalDistance/1000)
-                if (Double(totalDistance.toKiloMeter()) ?? 0.0).truncatingRemainder(dividingBy: 1.0) == 0 {
-                    pacePerKm.accept(pace)
+                let total = totalDistance.toKiloMeter()
+                if total.truncatingRemainder(dividingBy: 1.0) == 0 {
+                    let count = total / 1
+                    if Int(count) != totalPacePerKms.value.count {
+                        var val = totalPacePerKms.value
+                        val.append(pace)
+                        totalPacePerKms.accept(val)
+                    }
                 }
                 return Int(pace).toSeconds()
             }
@@ -161,13 +167,13 @@ class PaceViewModel {
         let isCurrentRunning = self.isRunning.filter { $0 }.mapToVoid()
         
         return Output(activity: self.activityState.asObservable().share(),
-                      distance: self.totalDistance.map{ $0.toKiloMeter() }.asObservable(),
+                      distance: self.totalDistance.debug("totalDistance").map{ $0.toKiloMeter() }.map{ "\($0)" }.asObservable(),
                       doNotWalking: doNotWalking,
                       isCurrentRunning: isCurrentRunning,
                       runningTimer: runningTimer.map { $0.toMinutes() },
                       walkingTimer: walkingTimer.map { $0.toMinutes() },
                       pace: pace.map { String($0) },
-                      pacePerKm: pacePerKm.asObservable())
+                      pacePerKms: totalPacePerKms.asObservable())
     }
 }
 

@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import CoreLocation
+import AudioToolbox
 
 enum ActivityState: String, Equatable {
     case stationary
@@ -28,9 +29,7 @@ final class PaceViewController: UIViewController, Alertable {
     @IBOutlet private weak var distanceLabel: UILabel!
     @IBOutlet private weak var walkingTItleImageView: UIImageView!
     
-    private var totalPacePerKm = [Double]()
     private let startRunning = BehaviorRelay<Bool>(value: true)
-    private let impactGenerator = UIImpactFeedbackGenerator(style: .heavy)
     private let viewModel = PaceViewModel()
     private let disposeBag = DisposeBag()
     var limitedWalkingTime = 0
@@ -79,7 +78,7 @@ extension PaceViewController {
         output.doNotWalking
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-                self?.impactGenerator.impactOccurred()
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 self?.toWalkingView()
         }).disposed(by: self.disposeBag)
         
@@ -98,10 +97,6 @@ extension PaceViewController {
                 self?.runningNotification()
             }).disposed(by: self.disposeBag)
         
-        output.pacePerKm.subscribe(onNext: { [weak self] pace in
-            self?.totalPacePerKm.append(pace)
-        }).disposed(by: self.disposeBag)
-        
         self.pauseButton.rx.tap
             .flatMap { [weak self] _ -> Observable<Bool> in
                 return self?.showStopAlert() ?? .empty()
@@ -114,9 +109,11 @@ extension PaceViewController {
             .filter { $0 }
             .withLatestFrom(Observable.combineLatest(output.distance,
                                                      output.runningTimer,
-                                                     output.walkingTimer) { ($0, $1, $2) })
-            .map { [weak self] distance, duration, walking in
-                let pace = self?.totalPacePerKm.reduce(0.0) { $0 + $1 / Double(self?.totalPacePerKm.count ?? 0)} ?? 0.0
+                                                     output.walkingTimer,
+                                                     output.pacePerKms) { ($0, $1, $2, $3) })
+            .map { distance, duration, walking, totalPacePerKm in
+
+                let pace = totalPacePerKm.reduce(0.0) { $0 + $1 / Double(totalPacePerKm.count)}
                 return Record(date: Date(),
                               distance: Double(distance) ?? 0.0,
                               duration: Int(duration) ?? 0,
