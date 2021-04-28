@@ -9,7 +9,7 @@ import UIKit
 
 enum PaceScene {
     case home
-    case pace
+    case pace(walkingTime: Int)
     case calendar
     case setting
     case result(Record)
@@ -26,8 +26,8 @@ extension PaceScene {
             let vc: HomeViewController = UIStoryboard.init(storyboard: .main).instantiateViewController()
             return vc
             
-        case .pace:
-            let vc: PaceViewController = PaceViewController.createInstance(())
+        case .pace(let walkingCount):
+            let vc: PaceViewController = PaceViewController.createInstance(walkingCount)
             return vc
             
         case .result(let record):

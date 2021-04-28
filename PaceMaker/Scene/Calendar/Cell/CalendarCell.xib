@@ -8,8 +8,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Oswald-VariableFont_wght.ttf">
-            <string>Oswald-Regular</string>
+        <array key="Oswald-Medium.ttf">
+            <string>Oswald-Medium</string>
         </array>
     </customFonts>
     <objects>
@@ -50,7 +50,7 @@
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBl-JK-jKz">
                         <rect key="frame" x="21" y="18.5" width="16" height="24"/>
-                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="16"/>
+                        <fontDescription key="fontDescription" name="Oswald-Medium" family="Oswald" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>

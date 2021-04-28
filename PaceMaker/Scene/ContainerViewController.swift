@@ -52,16 +52,23 @@ extension ContainerViewController: TransitionFactory {
             return
             
         case .pace:
-            let scenes = [scene]
-            self.present(scene.viewController, animated: true, completion: nil)
-            completion?()
+            
+            if self.presentedViewController is CountViewController {
+                self.presentedViewController?.present(scene.viewController, animated: true, completion: nil)
+            }
+            
             return
             
         case .result:
-            if self.presentedViewController is PaceViewController {
+            if self.presentedViewController is CountViewController {
                 self.presentedViewController?.dismiss(animated: true, completion: {
-                    self.present(scene.viewController, animated: true, completion: nil)
-                    self.completion?()
+                    if self.presentedViewController is CountViewController {
+                        self.presentedViewController?.dismiss(animated: false, completion: {
+                            self.present(scene.viewController, animated: true, completion: nil)
+                            self.completion?()
+                        })
+                    }
+                    
                 })
                 
                 return

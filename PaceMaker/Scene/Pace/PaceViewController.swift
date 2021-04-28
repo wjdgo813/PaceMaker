@@ -22,6 +22,10 @@ enum ActivityState: String, Equatable {
 final class PaceViewController: UIViewController, Alertable, Bannerable {
     
     @IBOutlet weak var bannerView: GADBannerView!
+    
+    @IBOutlet private weak var backBannerView: UIView!
+    @IBOutlet private weak var contentView: UIView!
+    @IBOutlet private weak var contentViewWidthConst: NSLayoutConstraint!
     @IBOutlet private weak var walkingBackgroundImageView: UIImageView!
     @IBOutlet private weak var runningBackgroundImageView: UIImageView!
     @IBOutlet private weak var pauseButton: UIButton!
@@ -31,10 +35,12 @@ final class PaceViewController: UIViewController, Alertable, Bannerable {
     @IBOutlet private weak var distanceLabel: UILabel!
     @IBOutlet private weak var walkingTItleImageView: UIImageView!
     
+    private let transitioning = TransitioningDelegate()
+    
     private let startRunning = BehaviorRelay<Bool>(value: true)
     private let viewModel = PaceViewModel()
     private let disposeBag = DisposeBag()
-    var limitedWalkingTime = 0
+    private var limitedWalkingTime = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,6 +170,7 @@ extension PaceViewController {
             self.walkingBackgroundImageView.alpha = 1.0
         } completion: {  _ in
             self.runningBackgroundImageView.isHidden = true
+            self.backBannerView.backgroundColor = UIColor(hexStr: "#9859A6")
         }
 
     }
@@ -182,6 +189,7 @@ extension PaceViewController {
         } completion: {  _ in
             self.walkingBackgroundImageView.isHidden = true
             self.walkingTItleImageView.isHidden = true
+            self.backBannerView.backgroundColor = UIColor(hexStr: "#0058EE")
         }
     }
     
@@ -214,5 +222,21 @@ extension PaceViewController {
 extension PaceViewController: VCFactorable {
     public static var storyboardIdentifier = "Main"
     public static var vcIdentifier = "PaceViewController"
-    public func bindData(value: Void) { }
+    public func bindData(value: Int) {
+        self.transitioning.present.willPresent = { [weak self] in
+            self?.contentView.alpha = 0.0
+            self?.contentViewWidthConst.constant = 200
+            self?.view.layoutIfNeeded()
+        }
+        
+        self.transitioning.present.didPresnet = { [weak self] in
+            guard let self = self else { return }
+            self.contentView.alpha = 1.0
+            self.contentViewWidthConst.constant = self.view.frame.width - 40
+        }
+        
+        self.transitioningDelegate  = self.transitioning
+        self.modalPresentationStyle = .currentContext
+        self.limitedWalkingTime = value
+    }
 }

@@ -6,14 +6,17 @@ target 'PaceMaker' do
   use_frameworks!
 
   # Pods for PaceMaker
-pod 'RxSwift'
-pod 'RxCocoa'
+pod 'RxSwift', '5.1.2'
+pod 'RxCocoa', '5.1.1'
 pod 'RxDataSources', '~> 4.0'
 pod 'JTAppleCalendar'
-pod 'Firebase/Analytics'
+pod 'lottie-ios'
+
+
 
 # Add the pods for any other Firebase products you want to use in your app
 # For example, to use Firebase Authentication and Cloud Firestore
+pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'Google-Mobile-Ads-SDK'

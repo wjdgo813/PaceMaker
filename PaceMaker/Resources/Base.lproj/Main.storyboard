@@ -10,11 +10,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="OpenSans-Regular.ttf">
-            <string>OpenSans-Regular</string>
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+        <array key="Oswald-Bold.ttf">
+            <string>Oswald-Bold</string>
+        </array>
+        <array key="Oswald-Medium.ttf">
+            <string>Oswald-Medium</string>
         </array>
         <array key="Oswald-VariableFont_wght.ttf">
             <string>Oswald-Regular</string>
+            <string>Oswald-Regular_SemiBold</string>
         </array>
     </customFonts>
     <scenes>
@@ -45,8 +55,8 @@
                                 <rect key="frame" x="0.0" y="14" width="428" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vms-Tb-Zne">
-                                        <rect key="frame" x="156.66666666666666" y="12.666666666666666" width="114.99999999999997" height="29.666666666666671"/>
-                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
+                                        <rect key="frame" x="152" y="12.666666666666666" width="124.33333333333331" height="29.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Oswald-Regular_SemiBold" family="Oswald" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -78,43 +88,43 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="SUN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB8-ro-eaQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="61" height="32"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="MON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwx-O4-Tfh">
                                                 <rect key="frame" x="61" y="0.0" width="61.333333333333343" height="32"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="TUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fV-dy-ACB">
                                                 <rect key="frame" x="122.33333333333331" y="0.0" width="61" height="32"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="WED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UeF-RT-M0i">
                                                 <rect key="frame" x="183.33333333333334" y="0.0" width="61.333333333333343" height="32"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="THU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4I-Gv-57z">
                                                 <rect key="frame" x="244.66666666666663" y="0.0" width="61" height="32"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="FRI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pI-lu-WEE">
                                                 <rect key="frame" x="305.66666666666669" y="0.0" width="61.333333333333314" height="32"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Cc-bl-lWo">
                                                 <rect key="frame" x="367" y="0.0" width="61" height="32"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -178,7 +188,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="1" green="0.93725490196078431" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="FeM-dG-uRY" firstAttribute="centerX" secondItem="ehg-OM-ToB" secondAttribute="centerX" id="hq6-Yg-96Q"/>
                                     <constraint firstItem="FeM-dG-uRY" firstAttribute="top" secondItem="ehg-OM-ToB" secondAttribute="top" id="vx6-Va-aiy"/>
@@ -233,7 +243,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home" translatesAutoresizingMaskIntoConstraints="NO" id="ziG-sK-L48">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                <rect key="frame" x="-10" y="0.0" width="448" height="926"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THr-AR-oEQ">
                                 <rect key="frame" x="320" y="64" width="42" height="42"/>
@@ -252,8 +262,8 @@
                                     <constraint firstAttribute="width" constant="166" id="jMa-bF-Dng"/>
                                     <constraint firstAttribute="height" constant="54" id="vsn-s9-e6h"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="24"/>
-                                <inset key="titleEdgeInsets" minX="0.0" minY="-5" maxX="12" maxY="0.0"/>
+                                <fontDescription key="fontDescription" name="Oswald-Medium" family="Oswald" pointSize="24"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="-5" maxX="20" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-1" maxY="0.0"/>
                                 <state key="normal" title="5 minutes">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -266,7 +276,7 @@
                                     <constraint firstAttribute="width" constant="110" id="KZ9-DN-uIc"/>
                                     <constraint firstAttribute="height" constant="110" id="jdi-ZQ-Ec0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="Oswald-Regular_SemiBold" family="Oswald" pointSize="28"/>
                                 <state key="normal" title="GO">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -282,7 +292,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="nKT-Ke-jF7" kind="presentation" id="nUi-ei-LBN"/>
+                                    <segue destination="9ab-Wg-RgE" kind="presentation" id="1yv-jz-svw"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="vu5-pk-ljk">
@@ -311,7 +321,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.34509803921568627" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="hwF-oQ-a56" firstAttribute="centerX" secondItem="iUg-VS-PS8" secondAttribute="centerX" id="JZJ-fB-0p0"/>
                                     <constraint firstItem="hwF-oQ-a56" firstAttribute="top" secondItem="iUg-VS-PS8" secondAttribute="top" id="pCH-eQ-wpH"/>
@@ -327,7 +337,7 @@
                             <constraint firstItem="iUg-VS-PS8" firstAttribute="trailing" secondItem="50R-5T-jLC" secondAttribute="trailing" id="FpD-hU-WNZ"/>
                             <constraint firstItem="omQ-ed-Uql" firstAttribute="top" secondItem="AOQ-ro-VLD" secondAttribute="bottom" constant="16" id="LnJ-gR-xQw"/>
                             <constraint firstItem="omQ-ed-Uql" firstAttribute="leading" secondItem="AOQ-ro-VLD" secondAttribute="leading" id="OST-Fg-XYQ"/>
-                            <constraint firstItem="50R-5T-jLC" firstAttribute="trailing" secondItem="ziG-sK-L48" secondAttribute="trailing" id="RUO-KZ-u2e"/>
+                            <constraint firstItem="50R-5T-jLC" firstAttribute="trailing" secondItem="ziG-sK-L48" secondAttribute="trailing" constant="-10" id="RUO-KZ-u2e"/>
                             <constraint firstItem="vu5-pk-ljk" firstAttribute="centerY" secondItem="omQ-ed-Uql" secondAttribute="centerY" id="UTc-fh-ZxD"/>
                             <constraint firstItem="iUg-VS-PS8" firstAttribute="top" secondItem="2C0-Vp-DuS" secondAttribute="bottom" constant="62" id="VRp-MB-ORb"/>
                             <constraint firstItem="vu5-pk-ljk" firstAttribute="trailing" secondItem="omQ-ed-Uql" secondAttribute="trailing" constant="-24" id="Y66-iu-xyC"/>
@@ -338,7 +348,7 @@
                             <constraint firstItem="1GY-R4-p7A" firstAttribute="leading" secondItem="THr-AR-oEQ" secondAttribute="trailing" constant="4" id="hqs-yl-Fe4"/>
                             <constraint firstItem="ziG-sK-L48" firstAttribute="top" secondItem="aRF-BM-5Ye" secondAttribute="top" id="j3S-HP-7MI"/>
                             <constraint firstItem="iUg-VS-PS8" firstAttribute="top" secondItem="50R-5T-jLC" secondAttribute="bottom" constant="-44" id="kfd-cj-1rg"/>
-                            <constraint firstItem="ziG-sK-L48" firstAttribute="leading" secondItem="50R-5T-jLC" secondAttribute="leading" id="qnV-9z-NMO"/>
+                            <constraint firstItem="ziG-sK-L48" firstAttribute="leading" secondItem="50R-5T-jLC" secondAttribute="leading" constant="-10" id="qnV-9z-NMO"/>
                             <constraint firstItem="AOQ-ro-VLD" firstAttribute="leading" secondItem="50R-5T-jLC" secondAttribute="leading" constant="20" id="r43-sV-kzG"/>
                             <constraint firstAttribute="bottom" secondItem="ziG-sK-L48" secondAttribute="bottom" id="wuc-6D-81c"/>
                         </constraints>
@@ -352,24 +362,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxe-r2-CUf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="844.92753623188412" y="264.50892857142856"/>
+            <point key="canvasLocation" x="983" y="264"/>
         </scene>
         <!--Pace View Controller-->
         <scene sceneID="XlV-tb-dzt">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="nKT-Ke-jF7" customClass="PaceViewController" customModule="PaceMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaceViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nKT-Ke-jF7" customClass="PaceViewController" customModule="PaceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ih8-O0-FJu">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img_Running_Track" translatesAutoresizingMaskIntoConstraints="NO" id="ULf-a7-V27">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                <rect key="frame" x="-10" y="0.0" width="448" height="926"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PaceRunning" translatesAutoresizingMaskIntoConstraints="NO" id="URH-Ve-go2">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                <rect key="frame" x="-10" y="0.0" width="448" height="926"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76p-8a-h2H" customClass="RoundButton" customModule="PaceMaker" customModuleProvider="target">
-                                <rect key="frame" x="159" y="668" width="110" height="110"/>
+                                <rect key="frame" x="159" y="665" width="110" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="q3r-n7-bk3"/>
                                     <constraint firstAttribute="height" constant="110" id="vW7-Ur-KjA"/>
@@ -377,13 +387,13 @@
                                 <state key="normal" image="pause"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJF-NG-gAA">
-                                <rect key="frame" x="20" y="302" width="388" height="322"/>
+                                <rect key="frame" x="24" y="305" width="380" height="316"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjn-Gq-SGB">
-                                        <rect key="frame" x="2" y="2" width="384" height="52.666666666666664"/>
+                                        <rect key="frame" x="2" y="2" width="376" height="52"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIE-qf-sPI">
-                                                <rect key="frame" x="153" y="14.666666666666684" width="78.333333333333314" height="23.333333333333329"/>
+                                                <rect key="frame" x="149" y="14.333333333333313" width="78.333333333333314" height="23.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -397,20 +407,20 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGK-87-DrB">
-                                        <rect key="frame" x="2" y="54.666666666666686" width="384" height="124"/>
+                                        <rect key="frame" x="2" y="53.999999999999993" width="376" height="121.33333333333331"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXk-7l-Y2m">
-                                                <rect key="frame" x="109.66666666666666" y="27" width="164.99999999999997" height="70"/>
+                                                <rect key="frame" x="105.66666666666666" y="25.666666666666686" width="164.99999999999997" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="54.3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErE-D9-7Ze">
                                                         <rect key="frame" x="0.0" y="0.0" width="117" height="70"/>
-                                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="60"/>
+                                                        <fontDescription key="fontDescription" name="Oswald-Regular_SemiBold" family="Oswald" pointSize="60"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwU-AR-GX4">
                                                         <rect key="frame" x="121" y="22.666666666666632" width="44" height="37.333333333333343"/>
-                                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="32"/>
+                                                        <fontDescription key="fontDescription" name="Oswald-Regular_SemiBold" family="Oswald" pointSize="32"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -434,13 +444,13 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="x77-5E-oVP">
-                                        <rect key="frame" x="2" y="178.66666666666669" width="384" height="53"/>
+                                        <rect key="frame" x="2" y="175.33333333333331" width="376" height="52"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vo7-P4-1C3">
-                                                <rect key="frame" x="0.0" y="1.6666666666666288" width="126.66666666666667" height="50"/>
+                                                <rect key="frame" x="0.0" y="1" width="124" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeH-QS-fU0">
-                                                        <rect key="frame" x="33" y="15.666666666666687" width="61" height="18.666666666666671"/>
+                                                        <rect key="frame" x="31.666666666666664" y="15.666666666666687" width="60.999999999999993" height="18.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="16"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -453,17 +463,17 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pK2-O3-bEk">
-                                                <rect key="frame" x="126.66666666666666" y="0.0" width="2" height="53"/>
+                                                <rect key="frame" x="124" y="0.0" width="2" height="52"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="2" id="drP-HG-YQH"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1Y-Td-tXt">
-                                                <rect key="frame" x="128.66666666666666" y="1.6666666666666288" width="126.66666666666666" height="50"/>
+                                                <rect key="frame" x="126" y="1" width="124" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walking" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9y-N2-AGV">
-                                                        <rect key="frame" x="35.333333333333343" y="15.666666666666687" width="56.333333333333343" height="18.666666666666671"/>
+                                                        <rect key="frame" x="34" y="15.666666666666687" width="56.333333333333343" height="18.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="16"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -476,17 +486,17 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxh-GC-kvO">
-                                                <rect key="frame" x="255.33333333333331" y="0.0" width="2" height="53"/>
+                                                <rect key="frame" x="250" y="0.0" width="2" height="52"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="2" id="8aZ-U3-MIO"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meS-Lf-Fh8">
-                                                <rect key="frame" x="257.33333333333331" y="1.6666666666666288" width="126.66666666666669" height="50"/>
+                                                <rect key="frame" x="252" y="1" width="124" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pace" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZD-fb-s78">
-                                                        <rect key="frame" x="45.333333333333371" y="15.666666666666687" width="36.333333333333343" height="18.666666666666671"/>
+                                                        <rect key="frame" x="44" y="15.666666666666687" width="36.333333333333343" height="18.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="16"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -508,23 +518,23 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ZqI-Of-zRX">
-                                        <rect key="frame" x="2" y="231.66666666666666" width="384" height="88.333333333333343"/>
+                                        <rect key="frame" x="2" y="227.33333333333334" width="376" height="86.666666666666657"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIW-XZ-R88">
-                                                <rect key="frame" x="0.0" y="0.0" width="126.66666666666667" height="88.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="124" height="86.666666666666671"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEg-fu-rRV">
-                                                        <rect key="frame" x="43.666666666666671" y="32.666666666666742" width="39.666666666666671" height="23.333333333333329"/>
+                                                        <rect key="frame" x="42.333333333333329" y="31.666666666666629" width="39.666666666666671" height="23.333333333333329"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1G-RW-MwC">
                                                                 <rect key="frame" x="0.0" y="0.0" width="11.333333333333334" height="23.333333333333332"/>
-                                                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
+                                                                <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="20"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55T-tk-fez">
-                                                                <rect key="frame" x="13.333333333333327" y="4.6666666666666288" width="26.333333333333329" height="18.666666666666668"/>
-                                                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="16"/>
+                                                                <rect key="frame" x="13.333333333333341" y="4.6666666666666288" width="26.333333333333329" height="18.666666666666668"/>
+                                                                <fontDescription key="fontDescription" name="Oswald-Medium" family="Oswald" pointSize="16"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -547,20 +557,20 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kzg-ld-VYc">
-                                                <rect key="frame" x="128.66666666666666" y="0.0" width="126.66666666666666" height="88.333333333333329"/>
+                                                <rect key="frame" x="126" y="0.0" width="124" height="86.666666666666671"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kye-dU-5gr">
-                                                        <rect key="frame" x="43.666666666666686" y="32.666666666666742" width="39.666666666666657" height="23.333333333333329"/>
+                                                        <rect key="frame" x="42.333333333333343" y="31.666666666666629" width="39.666666666666657" height="23.333333333333329"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7u-rN-2T3">
                                                                 <rect key="frame" x="0.0" y="0.0" width="11.333333333333334" height="23.333333333333332"/>
-                                                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
+                                                                <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="20"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTB-qQ-G0J">
                                                                 <rect key="frame" x="13.333333333333313" y="4.6666666666666288" width="26.333333333333329" height="18.666666666666668"/>
-                                                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="16"/>
+                                                                <fontDescription key="fontDescription" name="Oswald-Medium" family="Oswald" pointSize="16"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -583,20 +593,20 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rqY-ib-IRG">
-                                                <rect key="frame" x="257.33333333333331" y="0.0" width="126.66666666666669" height="88.333333333333329"/>
+                                                <rect key="frame" x="252" y="0.0" width="124" height="86.666666666666671"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvl-A8-spz">
-                                                        <rect key="frame" x="29.333333333333371" y="32.666666666666742" width="68.333333333333329" height="23.333333333333329"/>
+                                                        <rect key="frame" x="28" y="31.666666666666629" width="68.333333333333329" height="23.333333333333329"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJV-fn-3Am">
                                                                 <rect key="frame" x="0.0" y="0.0" width="39" height="23.333333333333332"/>
-                                                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
+                                                                <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="20"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7J-43-61O">
                                                                 <rect key="frame" x="41" y="4.6666666666666288" width="27.333333333333329" height="18.666666666666668"/>
-                                                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="16"/>
+                                                                <fontDescription key="fontDescription" name="Oswald-Medium" family="Oswald" pointSize="16"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -633,6 +643,7 @@
                                     <constraint firstItem="YGK-87-DrB" firstAttribute="leading" secondItem="zjn-Gq-SGB" secondAttribute="leading" id="2S6-cx-7nO"/>
                                     <constraint firstAttribute="trailing" secondItem="x77-5E-oVP" secondAttribute="trailing" constant="2" id="BiY-eA-hgL"/>
                                     <constraint firstAttribute="trailing" secondItem="zjn-Gq-SGB" secondAttribute="trailing" constant="2" id="FpZ-PW-QRz"/>
+                                    <constraint firstAttribute="width" constant="380" id="GUN-Tl-NxO"/>
                                     <constraint firstItem="x77-5E-oVP" firstAttribute="leading" secondItem="lJF-NG-gAA" secondAttribute="leading" constant="2" id="L7U-4B-oxQ"/>
                                     <constraint firstAttribute="width" secondItem="lJF-NG-gAA" secondAttribute="height" multiplier="319:265" id="SEs-Ri-P1F"/>
                                     <constraint firstItem="meS-Lf-Fh8" firstAttribute="width" secondItem="rqY-ib-IRG" secondAttribute="width" id="VBZ-cV-lAt"/>
@@ -661,7 +672,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.34509803921568627" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="KCb-Sa-5qy" firstAttribute="centerX" secondItem="yRm-4T-6sz" secondAttribute="centerX" id="eZ6-vN-aXq"/>
                                     <constraint firstItem="KCb-Sa-5qy" firstAttribute="top" secondItem="yRm-4T-6sz" secondAttribute="top" id="k8q-Nl-j0z"/>
@@ -680,26 +691,27 @@
                             <constraint firstAttribute="bottom" secondItem="URH-Ve-go2" secondAttribute="bottom" id="4U6-Ag-reD"/>
                             <constraint firstItem="yRm-4T-6sz" firstAttribute="leading" secondItem="7kx-GX-UVi" secondAttribute="leading" id="7sE-xp-BM0"/>
                             <constraint firstItem="76p-8a-h2H" firstAttribute="centerX" secondItem="Ih8-O0-FJu" secondAttribute="centerX" id="8fW-D4-hhq"/>
-                            <constraint firstItem="ULf-a7-V27" firstAttribute="leading" secondItem="Ih8-O0-FJu" secondAttribute="leading" id="Apx-WJ-zb2"/>
+                            <constraint firstItem="ULf-a7-V27" firstAttribute="leading" secondItem="Ih8-O0-FJu" secondAttribute="leading" constant="-10" id="Apx-WJ-zb2"/>
                             <constraint firstItem="UL0-mT-BIu" firstAttribute="centerX" secondItem="Ih8-O0-FJu" secondAttribute="centerX" id="B3U-x8-7P6"/>
-                            <constraint firstItem="URH-Ve-go2" firstAttribute="leading" secondItem="7kx-GX-UVi" secondAttribute="leading" id="FsZ-HD-JdB"/>
+                            <constraint firstItem="URH-Ve-go2" firstAttribute="leading" secondItem="7kx-GX-UVi" secondAttribute="leading" constant="-10" id="FsZ-HD-JdB"/>
                             <constraint firstItem="7kx-GX-UVi" firstAttribute="bottom" secondItem="yRm-4T-6sz" secondAttribute="top" constant="44" id="IZl-q4-NkL"/>
                             <constraint firstItem="URH-Ve-go2" firstAttribute="top" secondItem="Ih8-O0-FJu" secondAttribute="top" id="MoD-Bs-rJJ"/>
                             <constraint firstItem="UL0-mT-BIu" firstAttribute="leading" secondItem="Ih8-O0-FJu" secondAttribute="leading" constant="20" id="PGv-Qi-KWn"/>
                             <constraint firstAttribute="bottom" secondItem="yRm-4T-6sz" secondAttribute="bottom" id="WHz-FE-8Wn"/>
-                            <constraint firstItem="7kx-GX-UVi" firstAttribute="trailing" secondItem="lJF-NG-gAA" secondAttribute="trailing" constant="20" id="Y1k-14-aq4"/>
                             <constraint firstItem="ULf-a7-V27" firstAttribute="top" secondItem="Ih8-O0-FJu" secondAttribute="top" id="cxV-rS-Xdu"/>
                             <constraint firstItem="UL0-mT-BIu" firstAttribute="top" secondItem="7kx-GX-UVi" secondAttribute="top" constant="50" id="gx4-7S-J5D"/>
                             <constraint firstItem="lJF-NG-gAA" firstAttribute="centerX" secondItem="Ih8-O0-FJu" secondAttribute="centerX" id="ixH-77-Qb7"/>
                             <constraint firstAttribute="bottom" secondItem="ULf-a7-V27" secondAttribute="bottom" id="pzE-t5-mgI"/>
-                            <constraint firstItem="7kx-GX-UVi" firstAttribute="trailing" secondItem="ULf-a7-V27" secondAttribute="trailing" id="qde-4U-LNH"/>
-                            <constraint firstItem="lJF-NG-gAA" firstAttribute="leading" secondItem="7kx-GX-UVi" secondAttribute="leading" constant="20" id="sow-CK-djK"/>
+                            <constraint firstItem="7kx-GX-UVi" firstAttribute="trailing" secondItem="ULf-a7-V27" secondAttribute="trailing" constant="-10" id="qde-4U-LNH"/>
                             <constraint firstAttribute="trailing" secondItem="UL0-mT-BIu" secondAttribute="trailing" constant="20" id="t2s-5X-xgV"/>
-                            <constraint firstItem="7kx-GX-UVi" firstAttribute="trailing" secondItem="URH-Ve-go2" secondAttribute="trailing" id="zOv-2H-vhY"/>
+                            <constraint firstItem="7kx-GX-UVi" firstAttribute="trailing" secondItem="URH-Ve-go2" secondAttribute="trailing" constant="-10" id="zOv-2H-vhY"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBannerView" destination="yRm-4T-6sz" id="GcP-uZ-QaH"/>
                         <outlet property="bannerView" destination="KCb-Sa-5qy" id="sSF-e9-7oG"/>
+                        <outlet property="contentView" destination="lJF-NG-gAA" id="nDm-vr-Bf6"/>
+                        <outlet property="contentViewWidthConst" destination="GUN-Tl-NxO" id="4kR-jY-13C"/>
                         <outlet property="distanceLabel" destination="ErE-D9-7Ze" id="acz-hf-TgU"/>
                         <outlet property="durationLabel" destination="h1G-RW-MwC" id="FWK-qX-b5b"/>
                         <outlet property="paceLabel" destination="FJV-fn-3Am" id="SPC-xm-TR9"/>
@@ -712,7 +724,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFz-in-yCC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1816" y="281"/>
+            <point key="canvasLocation" x="2671" y="280"/>
+        </scene>
+        <!--Count View Controller-->
+        <scene sceneID="N5q-vJ-YvO">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="9ab-Wg-RgE" customClass="CountViewController" customModule="PaceMaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gPN-ul-F2f">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2K-5k-Z8j">
+                                <rect key="frame" x="0.0" y="322" width="428" height="282"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="282" id="ylM-pv-w0y"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ymP-kh-B08"/>
+                        <color key="backgroundColor" red="0.0" green="0.34509803921568627" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="P2K-5k-Z8j" firstAttribute="centerX" secondItem="gPN-ul-F2f" secondAttribute="centerX" id="Bkr-xA-i8V"/>
+                            <constraint firstItem="P2K-5k-Z8j" firstAttribute="leading" secondItem="ymP-kh-B08" secondAttribute="leading" id="bOn-N6-5ox"/>
+                            <constraint firstItem="P2K-5k-Z8j" firstAttribute="centerY" secondItem="gPN-ul-F2f" secondAttribute="centerY" id="diM-dT-Cx7"/>
+                            <constraint firstItem="ymP-kh-B08" firstAttribute="trailing" secondItem="P2K-5k-Z8j" secondAttribute="trailing" id="uDD-XA-4wF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="countView" destination="P2K-5k-Z8j" id="3cA-FM-ahZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K4d-pD-d43" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1853" y="280"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="hNa-BP-uac">
@@ -723,8 +768,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoI-D7-vZN">
-                                <rect key="frame" x="184" y="26" width="60" height="29.666666666666671"/>
-                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
+                                <rect key="frame" x="181" y="26" width="66.333333333333314" height="29.666666666666671"/>
+                                <fontDescription key="fontDescription" name="Oswald-Regular_SemiBold" family="Oswald" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -735,8 +780,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="49"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKU-d0-u2n">
-                                                <rect key="frame" x="20" y="0.0" width="96" height="49"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="20" y="0.0" width="86.666666666666671" height="49"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -794,7 +839,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Csf-RU-9Zj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1816" y="944"/>
+            <point key="canvasLocation" x="983" y="1057"/>
         </scene>
     </scenes>
     <designables>
@@ -809,7 +854,7 @@
         <image name="Guide" width="306" height="195"/>
         <image name="Home" width="504.33334350585938" height="672"/>
         <image name="Img_Running_Track" width="503" height="667"/>
-        <image name="PaceRunning" width="375" height="667"/>
+        <image name="PaceRunning" width="503" height="667"/>
         <image name="Records" width="42" height="42"/>
         <image name="Settings" width="42" height="42"/>
         <image name="arrow" width="12.666666984558105" height="10"/>

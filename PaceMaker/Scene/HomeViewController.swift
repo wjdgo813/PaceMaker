@@ -30,7 +30,7 @@ final class HomeViewController: UIViewController, Alertable, Bannerable {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        guard let vc = segue.destination as? PaceViewController else { return }
+        guard let vc = segue.destination as? CountViewController else { return }
         vc.limitedWalkingTime = self.setCount
     }
 }
