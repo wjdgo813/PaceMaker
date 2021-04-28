@@ -42,9 +42,7 @@
 		6F96DA9A26020C5B008E8D89 /* RxCLLocationDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96DA9926020C5B008E8D89 /* RxCLLocationDelegateProxy.swift */; };
 		6F9D7B312639A1D80096D9D4 /* CountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D7B302639A1D80096D9D4 /* CountViewController.swift */; };
 		6F9D7B3A2639A2C50096D9D4 /* countdown.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F9D7B392639A2C50096D9D4 /* countdown.json */; };
-		6F9D7B492639AAFE0096D9D4 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D7B482639AAFE0096D9D4 /* TransitionViewController.swift */; };
-		6F9D7B4E2639AB100096D9D4 /* TransitionSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D7B4D2639AB100096D9D4 /* TransitionSetting.swift */; };
-		6F9D7B532639AF6A0096D9D4 /* PaceViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D7B522639AF6A0096D9D4 /* PaceViewController+Transition.swift */; };
+		6F9D7B532639AF6A0096D9D4 /* Transitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D7B522639AF6A0096D9D4 /* Transitioning.swift */; };
 		6FA487A4262F034400340B66 /* TableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA487A3262F034400340B66 /* TableView+.swift */; };
 		6FA487AE262F03ED00340B66 /* PaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA487AC262F03ED00340B66 /* PaceCell.swift */; };
 		6FA487AF262F03ED00340B66 /* PaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA487AD262F03ED00340B66 /* PaceCell.xib */; };
@@ -137,9 +135,7 @@
 		6F96DA9926020C5B008E8D89 /* RxCLLocationDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCLLocationDelegateProxy.swift; sourceTree = "<group>"; };
 		6F9D7B302639A1D80096D9D4 /* CountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountViewController.swift; sourceTree = "<group>"; };
 		6F9D7B392639A2C50096D9D4 /* countdown.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countdown.json; sourceTree = "<group>"; };
-		6F9D7B482639AAFE0096D9D4 /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
-		6F9D7B4D2639AB100096D9D4 /* TransitionSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionSetting.swift; sourceTree = "<group>"; };
-		6F9D7B522639AF6A0096D9D4 /* PaceViewController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaceViewController+Transition.swift"; sourceTree = "<group>"; };
+		6F9D7B522639AF6A0096D9D4 /* Transitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitioning.swift; sourceTree = "<group>"; };
 		6FA487A3262F034400340B66 /* TableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+.swift"; sourceTree = "<group>"; };
 		6FA487AC262F03ED00340B66 /* PaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCell.swift; sourceTree = "<group>"; };
 		6FA487AD262F03ED00340B66 /* PaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaceCell.xib; sourceTree = "<group>"; };
@@ -354,7 +350,6 @@
 			children = (
 				6FD4A87625F6348100838BAE /* PaceViewController.swift */,
 				6FD4A87B25F7134E00838BAE /* PaceViewModel.swift */,
-				6F9D7B522639AF6A0096D9D4 /* PaceViewController+Transition.swift */,
 			);
 			path = Pace;
 			sourceTree = "<group>";
@@ -378,8 +373,7 @@
 		6F9D7B472639AAEB0096D9D4 /* Transition */ = {
 			isa = PBXGroup;
 			children = (
-				6F9D7B482639AAFE0096D9D4 /* TransitionViewController.swift */,
-				6F9D7B4D2639AB100096D9D4 /* TransitionSetting.swift */,
+				6F9D7B522639AF6A0096D9D4 /* Transitioning.swift */,
 			);
 			path = Transition;
 			sourceTree = "<group>";
@@ -719,7 +713,6 @@
 				6F32C25F260A10A900027863 /* CalendarViewController.swift in Sources */,
 				6F6C3B80261DE570004AC28D /* CalendarCell.swift in Sources */,
 				6FD4A87C25F7134E00838BAE /* PaceViewModel.swift in Sources */,
-				6F9D7B4E2639AB100096D9D4 /* TransitionSetting.swift in Sources */,
 				6F32C293260A22A300027863 /* PaceDataManager+Rx.swift in Sources */,
 				6F32C26A260A14B400027863 /* Pace.xcdatamodeld in Sources */,
 				6F96DA9A26020C5B008E8D89 /* RxCLLocationDelegateProxy.swift in Sources */,
@@ -750,9 +743,8 @@
 				6FD4A87725F6348100838BAE /* PaceViewController.swift in Sources */,
 				6F32C241260A0D8700027863 /* PaceScene.swift in Sources */,
 				6F32C288260A167600027863 /* Pace+CoreDataClass.swift in Sources */,
-				6F9D7B492639AAFE0096D9D4 /* TransitionViewController.swift in Sources */,
 				6F2BA5122629C7DF00EA2D67 /* Optional+.swift in Sources */,
-				6F9D7B532639AF6A0096D9D4 /* PaceViewController+Transition.swift in Sources */,
+				6F9D7B532639AF6A0096D9D4 /* Transitioning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -938,7 +930,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.3;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-l\"c++\"",
@@ -1045,7 +1037,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.3;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-l\"c++\"",

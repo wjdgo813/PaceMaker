@@ -79,7 +79,7 @@ class PaceViewModel {
                 guard let last = oldLocations.last else { return 0.0 }
                 return last.distance(from: newLocation)
             }.withLatestFrom(self.activityState) { ($0,$1) }.debug("jhh")
-//            .filter { $1  != .stationary }
+            .filter { $1  != .stationary }
             .map { $0.0 }
         
         distance
