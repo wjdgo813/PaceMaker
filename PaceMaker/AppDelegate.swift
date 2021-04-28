@@ -7,6 +7,8 @@
 
 import UIKit
 import UserNotifications
+import Firebase
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var unNotification : UserNotification = UserNotification()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+//        FirebaseApp.configure()
+//        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         if UserDefaults.standard.object(forKey: "notiOn") == nil {
             UserDefaults.standard.set(true, forKey: "notiOn")

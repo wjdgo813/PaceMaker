@@ -10,7 +10,14 @@ pod 'RxSwift'
 pod 'RxCocoa'
 pod 'RxDataSources', '~> 4.0'
 pod 'JTAppleCalendar'
+pod 'Firebase/Analytics'
 
+# Add the pods for any other Firebase products you want to use in your app
+# For example, to use Firebase Authentication and Cloud Firestore
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'Google-Mobile-Ads-SDK'
+pod 'Firebase/InAppMessaging'	
 
   target 'PaceMakerTests' do
     inherit! :search_paths

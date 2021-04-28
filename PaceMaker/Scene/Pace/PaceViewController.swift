@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import CoreLocation
 import AudioToolbox
+import GoogleMobileAds
 
 enum ActivityState: String, Equatable {
     case stationary
@@ -18,8 +19,9 @@ enum ActivityState: String, Equatable {
     case running
 }
 
-final class PaceViewController: UIViewController, Alertable {
+final class PaceViewController: UIViewController, Alertable, Bannerable {
     
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet private weak var walkingBackgroundImageView: UIImageView!
     @IBOutlet private weak var runningBackgroundImageView: UIImageView!
     @IBOutlet private weak var pauseButton: UIButton!
@@ -36,6 +38,7 @@ final class PaceViewController: UIViewController, Alertable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initBanner(root: self)
         self.setupUI()
         self.setBind()
         self.bindUI()
@@ -110,15 +113,22 @@ extension PaceViewController {
             .withLatestFrom(Observable.combineLatest(output.distance,
                                                      output.runningTimer,
                                                      output.walkingTimer,
-                                                     output.pacePerKms) { ($0, $1, $2, $3) })
-            .map { distance, duration, walking, totalPacePerKm in
-
-                let pace = totalPacePerKm.reduce(0.0) { $0 + $1 / Double(totalPacePerKm.count)}
+                                                     output.pacePerKms,
+                                                     output.pace.startWith("00:00")) { ($0, $1, $2, $3, $4) })
+            .map { distance, duration, walking, totalPacePerKm, currentPace in
+                var pace = ""
+                if totalPacePerKm.isEmpty {
+                    pace = currentPace
+                } else {
+                    let total = totalPacePerKm.reduce(0.0) { $0 + $1 / Double(totalPacePerKm.count)}
+                    pace = Int(total).toSeconds()
+                }
+                
                 return Record(date: Date(),
                               distance: Double(distance) ?? 0.0,
                               duration: Int(duration) ?? 0,
                               walking: Int(walking) ?? 0,
-                              pace: Int(pace).toSeconds())
+                              pace: pace)
                 
             }
             .flatMap { record in

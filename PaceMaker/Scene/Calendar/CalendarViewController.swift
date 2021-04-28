@@ -10,9 +10,12 @@ import JTAppleCalendar
 import RxSwift
 import RxCocoa
 import RxDataSources
+import GoogleMobileAds
 
-final class CalendarViewController: UIViewController {
+final class CalendarViewController: UIViewController, Bannerable {
     
+    
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
             self.tableView.separatorStyle = .none
@@ -24,6 +27,11 @@ final class CalendarViewController: UIViewController {
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var previousButton: UIButton!
     
+    private var interstitial: GADInterstitialAd? {
+        didSet {
+            interstitial?.present(fromRootViewController: self)
+        }
+    }
     private let selectedDay = BehaviorRelay<Date>(value: Date())
     private let selectedPace = BehaviorRelay<[Pace]?>(value: nil)
     private let reloadMonth = PublishRelay<String>()
@@ -32,12 +40,27 @@ final class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initBanner(root: self)
+        self.initAd()
         self.setupUI()
         self.setBind()
     }
 }
 
 extension CalendarViewController {
+    private func initAd() {
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
+                               request: request,
+                               completionHandler: { [self] ad, error in
+                                if let error = error {
+                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                                    return
+                                }
+                                self.interstitial = ad
+                               })
+    }
+    
     private func setupUI() {
         self.setCalendarView()
         self.setTableView()
@@ -71,7 +94,9 @@ extension CalendarViewController {
             }).disposed(by: self.disposeBag)
         
         self.reloadMonth
+            .observeOn(SerialDispatchQueueScheduler(qos: .default))
             .flatMapLatest { PaceDataManager.shared.rxQuery(yearMonth: $0) }
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] paces in
                 guard let self = self else { return }
                 self.currentMonthPace = paces

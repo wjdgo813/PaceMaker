@@ -8,9 +8,11 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import GoogleMobileAds
 
-final class HomeViewController: UIViewController, Alertable {
+final class HomeViewController: UIViewController, Alertable, Bannerable {
 
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet private weak var timerButton: UIButton!
     private var setCount = 3 {
         didSet {
@@ -21,21 +23,7 @@ final class HomeViewController: UIViewController, Alertable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        PaceDataManager.shared.rxQuery().debug("PaceDataManager rxQuery")
-            .subscribe(onNext: { paces in
-                paces.forEach { pace in
-                    print("-------")
-                    print(pace.id)
-                    print("\(pace.distance)")
-                    print(String(pace.duration))
-                    print(String(pace.walking))
-                    print(String(pace.pace ?? ""))
-                    print("\(pace.runDate.toUTCString())")
-                    print("\(pace.runDate.string(WithFormat: .MM))")
-                    print("\(pace.runDate.string(WithFormat: .paceDate))")
-                }
-            }).disposed(by: self.disposeBag)
-        
+        self.initBanner(root: self)
         self.setupUI()
         self.setBind()
     }

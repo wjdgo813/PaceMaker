@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,7 +23,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2k-nR-vf4" customClass="StrokeView" customModule="PaceMaker" customModuleProvider="target">
-                        <rect key="frame" x="21" y="47.5" width="16" height="3"/>
+                        <rect key="frame" x="21" y="45.5" width="16" height="3"/>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.87450980392156863" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="3MC-iq-h7w"/>
@@ -61,7 +62,7 @@
                 <constraint firstItem="VBl-JK-jKz" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Cpg-x8-RNY"/>
                 <constraint firstItem="tUQ-VX-GLV" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="OQE-XC-eUf"/>
                 <constraint firstItem="VBl-JK-jKz" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="hrd-FN-Lv7"/>
-                <constraint firstItem="d2k-nR-vf4" firstAttribute="top" secondItem="VBl-JK-jKz" secondAttribute="bottom" constant="5" id="oNy-sf-sVI"/>
+                <constraint firstItem="d2k-nR-vf4" firstAttribute="top" secondItem="VBl-JK-jKz" secondAttribute="bottom" constant="3" id="oNy-sf-sVI"/>
                 <constraint firstItem="d2k-nR-vf4" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="xOd-zI-IKN"/>
             </constraints>
             <size key="customSize" width="58" height="61"/>

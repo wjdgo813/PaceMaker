@@ -41,7 +41,7 @@ class PaceViewModel {
     private var timeCount   = 0
     private var walkingTime = 0
     private var limitedWalkingTime = 0
-    private var totalPace = [Double]()
+    private var oneKMPaces = [Double]()
     
     private let motionManager = CMMotionActivityManager()
     private let locations     = BehaviorRelay<[CLLocation]>(value: [])
@@ -78,26 +78,67 @@ class PaceViewModel {
                 guard let last = oldLocations.last else { return 0.0 }
                 return last.distance(from: newLocation)
             }.withLatestFrom(self.activityState) { ($0,$1) }.debug("jhh")
-            .filter { $1  != .stationary }
+//            .filter { $1  != .stationary }
             .map { $0.0 }
         
         //pace 공식: 전체 시간(seconds) / 전체 거리(km)
         let pace = updateLocation
-            .withLatestFrom(self.totalDistance) { ($0,$1) }
-            .map { [weak self] (newLocation, totalDistance) -> String in
-                guard let self = self, self.timeCount > 0, totalDistance > 0.0 else { return "0:00" }
-                let pace = Double(self.timeCount) / (totalDistance/1000)
+            .withLatestFrom(Observable.combineLatest(self.locations, self.totalDistance) { ($0,$1) }) { ($0,$1.0, $1.1) }
+            .map { [weak self] (newLocation, oldLocations, totalDistance) -> String in
+                guard let self = self,
+                      let last = oldLocations.last,
+                      self.timeCount > 0,
+                      totalDistance > 0.0 else { return "0:00" }
                 let total = totalDistance.toKiloMeter()
+                let time = newLocation.timestamp.timeIntervalSince(last.timestamp)
+                let distance = last.distance(from: newLocation)
+                
+                var pace = 0.0
+                if distance > 0.0 {
+                    pace = time / (distance/1000)
+                }
+                
+                print("pace: \(pace)")
                 if total.truncatingRemainder(dividingBy: 1.0) == 0 {
                     let count = total / 1
                     if Int(count) != totalPacePerKms.value.count {
+                        let averagePace = self.oneKMPaces.reduce(0.0) { return $0 + $1 / Double(self.oneKMPaces.count) }
+                        
+                        self.oneKMPaces.removeAll()
                         var val = totalPacePerKms.value
-                        val.append(pace)
+                        val.append(averagePace)
                         totalPacePerKms.accept(val)
                     }
                 }
+                
+                self.oneKMPaces.append(pace)
                 return Int(pace).toSeconds()
             }
+        
+        
+//        let pace = updateLocation
+//            .withLatestFrom(self.totalDistance) { ($0,$1) }
+//            .map { [weak self] (newLocation, totalDistance) -> String in
+//                guard let self = self, self.timeCount > 0, totalDistance > 0.0 else { return "0:00" }
+//                let pace = Double(self.timeCount) / (totalDistance/1000)
+//                let total = totalDistance.toKiloMeter()
+//                if total.truncatingRemainder(dividingBy: 1.0) == 0 {
+//                    let count = total / 1
+//                    if Int(count) != totalPacePerKms.value.count {
+//                        let averagePace = self.oneKMPaces.reduce(0.0) {
+//                            return ($0 + $1) / Double(self.oneKMPaces.count)
+//                        }
+//
+//                        self.oneKMPaces.removeAll()
+//                        var val = totalPacePerKms.value
+//                        val.append(averagePace)
+//                        totalPacePerKms.accept(val)
+//                    }
+//                }
+//
+//                self.oneKMPaces.append(pace)
+//                return Int(pace).toSeconds()
+//            }
         
         distance
             .withLatestFrom(self.totalDistance) { ($0,$1) }
@@ -173,7 +214,7 @@ class PaceViewModel {
                       runningTimer: runningTimer.map { $0.toMinutes() },
                       walkingTimer: walkingTimer.map { $0.toMinutes() },
                       pace: pace.map { String($0) },
-                      pacePerKms: totalPacePerKms.asObservable())
+                      pacePerKms: totalPacePerKms.asObservable().debug("jhh totalPacePerKms"))
     }
 }
 
